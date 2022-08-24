@@ -7,5 +7,18 @@
        <put-attribute name="title" value="관리자 게시판 페이지" />
        <put-attribute name="body" value="/WEB-INF/views/admin/board/adminBoardMain.jsp" />
     </definition>
+    <definition name="/admin/board/boardDetail" extends="baseLayout">
+       <put-attribute name="title" value="공지사항 상세보기 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/admin/board/boardDetail.jsp" />
+    </definition>
     
+    <definition name="/admin/board/addBoardForm" extends="baseLayout">
+       <put-attribute name="title" value="공지사항 추가 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/admin/board/addBoardForm.jsp" />
+    </definition>
+    
+    <definition name="/admin/board/modifyBoardForm" extends="baseLayout">
+       <put-attribute name="title" value="공지사항 수정 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/admin/board/modifyBoardForm.jsp" />
+    </definition>
     </tiles-definitions>
