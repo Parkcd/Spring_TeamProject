@@ -37,9 +37,10 @@ public class MainController extends BaseController {
 		List listBoard = boardService.listBoard();
 		session=request.getSession();
 		session.setAttribute("side_menu", "user");
+		session.setAttribute("listBoard",listBoard);
 		Map<String,List<GoodsVO>> goodsMap=goodsService.listGoods();
 		mav.addObject("goodsMap", goodsMap);
-		mav.addObject("listBoard",listBoard);
+		//mav.addObject("listBoard",listBoard);
 		return mav;
 	}
 	
