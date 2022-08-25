@@ -59,16 +59,25 @@
 			    select rowNum as recNum,t.*
 			       from (
 			              select  *  from t_shopping_member 
-			              where joinDate between TO_DATE('2018/01/01','yyyy-mm-dd') and TO_DATE('2022/08/25','yyyy-mm-dd')
-			               <if test="search_type=='member_id'">
-			                  AND member_id=#{search_word}
+			              where  joinDate between TO_DATE('2018/01/01','yyyy-mm-dd') and TO_DATE('2022/08/25','yyyy-mm-dd')
+			                 <if test="s_search_type=='all'">  
+			                     
+			                  </if> 
+			                  <if test="s_search_type=='member_id'">  
+			                   AND member_id LIKE '%'||#{t_search_word}||'%'
+			                  </if>  
+			                   
+			                <if test="s_search_type=='member_name'">
+			                   AND  member_name LIKE '%'||#{t_search_word}||'%'
 			                </if>
-			                <if test="search_type=='member_name'">
-			                  AND member_name=#{search_word}
+			                 
+			                <if test="s_search_type=='member_hp_num'">
+			                    AND  hp1||hp2||hp3 LIKE '%'||#{t_search_word}||'%' 
 			                </if>
-			                <if test="search_type=='member_hp_num'">
-			                   AND hp1||hp2||hp3=#{search_word} 
-			                </if>
+			                
+			                <if test="s_search_type=='member_addr'">
+			                    AND  RoadAddress LIKE '%'||#{t_search_word}||'%'
+			                </if>  
 			              order by joinDate desc
 					    ) t
 				)							
