@@ -19,5 +19,35 @@
     ]]>
   </select>
   
+  <select id="boardOne" resultType="boardVO">
+  	<![CDATA[
+  		SELECT boardNO, title, content, writeDate
+  		from t_shopping_board	
+  		where boardNO = #{boardNO}
+  	]]>
   
+  </select>
+  
+  <delete id="deleteBoard" parameterType="Int">
+  	<![CDATA[
+  		DELETE from t_shopping_board	
+  		where boardNO = #{boardNO}
+  	]]>
+  </delete>
+  
+  <insert id="insertBoard" parameterType="boardVO">
+  	<![CDATA[
+  		insert into t_shopping_board(boardNO, title, content)	
+  		values(#{boardNO}, #{title}, #{content})
+  	]]>
+  </insert>
+  
+  
+  <update id="updateBoard" parameterType="boardVO">
+  <![CDATA[
+  		update t_shopping_board set
+  		boardNO = #{boardNO}, title = #{title}, content = #{content}	, writeDate = sysdate
+  		where boardNO = #{boardNO}
+  	]]>
+  </update>
   </mapper>
