@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+   <mapper namespace="mapper.qna">
+<resultMap id="qnaesResult" type="qnaVO">
+    <result property="qnaNO" column="qnaNO" />
+    <result property="qnaTitle" column="qnaTitle" />
+    <result property="qnaContent" column="qnaContent" />
+    <result property="qnaWriteDate" column="qnaWriteDate"/>
+    <result property="answerDate" column="answerDate"/>
+    <result property="answer" column="answer"/>
+  </resultMap> 
+  
+
+  <select id="qnaList" resultMap="qnaesResult"   >
+    <![CDATA[
+      SELECT  qnaNO,  qnaTitle, qnaContent, qnaWriteDate, answerDate, answer
+      from t_shopping_qna	
+    ]]>
+  </select>
+  
+  <select id="qnaOne" resultType="qnaVO">
+  	<![CDATA[
+  		SELECT qnaNO, qnaTitle, qnaContent, qnaWriteDate, answerDate, answer
+  		from t_shopping_qna	
+  		where qnaNO = #{qnaNO}
+  	]]>
+  
+  </select>
+  
+  <delete id="deleteQna" parameterType="Int">
+  	<![CDATA[
+  		DELETE from t_shopping_qna	
+  		where qnaNO = #{qnaNO}
+  	]]>
+  </delete>
+  
+  <insert id="insertQna" parameterType="qnaVO">
+  	<![CDATA[
+  		insert into t_shopping_qna(qnaNO, qnaTitle, qnaContent, qnaWriteDate)	
+  		values(#{qnaNO}, #{qnaTitle}, #{qnaContent}, sysdate)
+  	]]>
+  </insert>
+  
+  
+  <update id="updateQna" parameterType="qnaVO">
+  <![CDATA[
+  		update t_shopping_qna set
+  		 answerDate = sysdate, answer = #{answer}
+  		where qnaNO = #{qnaNO}
+  	]]>
+  </update>
+  </mapper>
