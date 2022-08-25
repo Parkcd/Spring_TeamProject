@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    <definition name="/qna/qnaMain" extends="baseLayout">
+       <put-attribute name="title" value="고객센터 메인" />
+       <put-attribute name="body" value="/WEB-INF/views//qna/qnaMain.jsp" />
+    </definition>
+    <definition name="/qna/qnaDetail" extends="baseLayout">
+       <put-attribute name="title" value="질문 상세보기 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/qna/qnaDetail.jsp" />
+    </definition>
+    
+    <definition name="/qna/writeQnaForm" extends="baseLayout">
+       <put-attribute name="title" value="질문하기 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/qna/writeQnaForm.jsp" />
+    </definition>
+    
+    <definition name="/qna/writeAnswerForm" extends="baseLayout">
+       <put-attribute name="title" value="답변하기 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/qna/writeAnswerForm.jsp" />
+    </definition>
+    </tiles-definitions>
