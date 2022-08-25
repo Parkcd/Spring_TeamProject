@@ -222,10 +222,10 @@ function fn_detail_search(){
 </head>
 <body>
 	<H3>회원 조회</H3>
-	<form name="frm_delivery_list" action="${contextPath}/admin/member/adminMemberMain.do" method="GET">	
+	<form name="frm_delivery_list" action="${contextPath}/admin/member/adminMemberMain.do " method="GET">	
 		<table cellpadding="10" cellspacing="10"  >
 			<tbody>		
-				<tr>
+			 <tr>
 				  <td>
 					조회한 기간:<input  type="text"  size="4" value="${beginYear}" />년
 							<input  type="text"  size="4" value="${beginMonth}"/>월	
@@ -235,7 +235,7 @@ function fn_detail_search(){
 							<input  type="text"  size="4" value="${endMonth }"/>월	
 							 <input  type="text"  size="4" value="${endDay }"/>일							 
 				  </td>
-				</tr>
+				</tr> 
 				
 				
 				
@@ -250,7 +250,7 @@ function fn_detail_search(){
 					</select>
 					<input  type="text"  size="30" name="t_search_word" />  
 					<!-- <input   type="button"  value="조회" name="btn_search" onClick="fn_detail_search()"/> -->
-					<input   type="submit"  value="조회" name="btn_search" />
+					<input   type="submit"  value="조회" name="btn_search" /> 
 				  </td>
 				</tr>				
 			</tbody>
