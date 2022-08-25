@@ -11,6 +11,7 @@
     <typeAlias type="com.bookshop01.order.vo.OrderVO" alias="orderVO" />
     <typeAlias type="com.bookshop01.mypage.vo.MyPageVO" alias="mypageVO" />
     <typeAlias type="com.bookshop01.board.vo.BoardVO" alias="boardVO" />
+    <typeAlias type="com.bookshop01.qna.vo.QnaVO" alias="qnaVO" />
   </typeAliases>
 </configuration>
 
