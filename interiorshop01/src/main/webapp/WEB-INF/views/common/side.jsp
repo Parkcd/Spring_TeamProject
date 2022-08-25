@@ -75,7 +75,7 @@
 	<UL>
 	
 	<c:forEach  var="board" items="${listBoard }">
-		<li><a href="#">${board.title}</a></li>
+		<li><a href="${contextPath}/admin/board/boardDetail.do?boardNO=${board.boardNO}">${board.title}</a></li>
 		
 	</c:forEach>
 	</ul>
@@ -88,6 +88,6 @@
 	<a href="#"><img width="190" height="104" src="${contextPath}/resources/image/call_center_logo.jpg"></a>
 </div>
 <div id="banner">
-	<a href="#"><img width="190" height="69" src="${contextPath}/resources/image/QnA_logo.jpg"></a>
+	<a href="${contextPath}/qna/qnaMain.do"><img width="190" height="69" src="${contextPath}/resources/image/QnA_logo.jpg"></a>
 </div>
 </html>
