@@ -7,7 +7,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,9 +25,16 @@ public class AdminMemberControllerImpl extends BaseController  implements AdminM
 	@Autowired
 	AdminMemberService adminMemberService;
 	
+	
+	
 	@RequestMapping(value="/adminMemberMain.do" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView adminGoodsMain(@RequestParam Map<String, String> dateMap,
+									   @RequestParam String s_search_type,
+									   @RequestParam String t_search_word,
 			                           HttpServletRequest request, HttpServletResponse response)  throws Exception{
+		
+		
+		
 		String viewName=(String)request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 
@@ -36,11 +42,17 @@ public class AdminMemberControllerImpl extends BaseController  implements AdminM
 		String section = dateMap.get("section");
 		String pageNum = dateMap.get("pageNum");
 		String beginDate=null,endDate=null;
+		/*
+		 * String beginYear = dateMap.get(beginDate); String beginMonth =
+		 * dateMap.get(beginDate); String beginDay = dateMap.get(beginDate);
+		 */
+		
+		
 		
 		String [] tempDate=calcSearchPeriod(fixedSearchPeriod).split(",");
-		beginDate=tempDate[0];
+	    beginDate=tempDate[0]; 
 		endDate=tempDate[1];
-		dateMap.put("beginDate", beginDate);
+		/* dateMap.put("beginDate", beginDate); */
 		dateMap.put("endDate", endDate);
 		
 		
@@ -52,13 +64,31 @@ public class AdminMemberControllerImpl extends BaseController  implements AdminM
 		if(pageNum== null) {
 			pageNum = "1";
 		}
+		
+		
+		
+		System.out.println(beginDate);
+		System.out.println(endDate);
 		condMap.put("pageNum",pageNum);
 		condMap.put("beginDate",beginDate);
 		condMap.put("endDate", endDate);
-		ArrayList<MemberVO> member_list=adminMemberService.listMember(condMap);
-		mav.addObject("member_list", member_list);
+		condMap.put("s_search_type", s_search_type);
+		condMap.put("t_search_word", t_search_word);
 		
-		String beginDate1[]=beginDate.split("-");
+		
+		
+	    ArrayList<MemberVO> member_list=adminMemberService.listMember(condMap);
+	    mav.addObject("member_list", member_list);
+		/*
+		 * mav.addObject("s_search_type",s_search_type);
+		 * mav.addObject("t_search_word",t_search_word);
+		 */
+		 
+	    
+	    System.out.println(s_search_type);
+	    System.out.println(t_search_word);
+		
+	    String beginDate1[]=beginDate.split("-");
 		String endDate2[]=endDate.split("-");
 		mav.addObject("beginYear",beginDate1[0]);
 		mav.addObject("beginMonth",beginDate1[1]);
