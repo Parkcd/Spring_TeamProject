@@ -17,10 +17,10 @@
 		enctype="multipart/form-data">
 		<H3>공지사항 작성</H3>
 		<table>
-			<tr>
+			<!-- <tr>
 				<td>번호</td>
 				<td><input name="boardNO" type="text" size="40" /></td>
-			</tr>
+			</tr> -->
 
 			<tr>
 				<td>제목</td>

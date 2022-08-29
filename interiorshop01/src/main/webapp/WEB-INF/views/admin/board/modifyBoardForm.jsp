@@ -37,7 +37,7 @@
 			</tr>
 			<tr>
 				<td>작성일자</td>
-				<td><input name="content" type="text" size="40" 
+				<td><input name="writeDate" type="text" size="40" 
 				value = "${board.writeDate }"	readonly="readonly"/></td>
 			</tr>
 		</table>
