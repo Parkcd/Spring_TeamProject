@@ -16,7 +16,6 @@
 			<li><a href="${contextPath}/admin/goods/adminGoodsMain.do">상품관리</a></li>
 			<li><a href="${contextPath}/admin/order/adminOrderMain.do">주문관리</a></li>
 			<li><a href="${contextPath}/admin/member/adminMemberMain.do">회원관리</a></li>
-			<li><a href="#">배송관리</a></li>
 			<li><a href="${contextPath}/admin/board/adminBoardMain.do">게시판관리</a></li>
 		</ul>
 	</li>
@@ -71,12 +70,18 @@
 	<a href="#"><img width="190" height="163" src="${contextPath}/resources/image/n-pay.jpg"> </a>
 </div>
 <DIV id="notice">
-	<H2>공지사항</H2>
+	
+	<H2><a href = "${contextPath}/admin/board/adminBoardMain.do">공지사항</a></H2>
 	<UL>
 	
-	<c:forEach  var="board" items="${listBoard }">
-		<li><a href="${contextPath}/admin/board/boardDetail.do?boardNO=${board.boardNO}">${board.title}</a></li>
-		
+	
+	
+	<c:forEach  var="board" items="${listBoard }" varStatus="status">
+	<c:if test="${status.count <= 5 }">
+	<td>
+		<a href="${contextPath}/admin/board/boardDetail.do?boardNO=${board.boardNO}">-${board.title}</a>
+	</td><br>
+	</c:if>
 	</c:forEach>
 	</ul>
 </div>
