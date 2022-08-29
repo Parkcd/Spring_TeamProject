@@ -20,8 +20,8 @@
 	<DIV class="clear"></DIV>
 	<TABLE class="list_view">
 		
-		<TR>	<TD>번호 :<strong>${qna.qnaNO }. </strong></TD><TR>
-		<TR>	<TD>제목 :<strong>${qna.qnaTitle }</strong></TD><TR>
+		<TR>	<TD><strong>작성자:${qna.qnaId } </strong></TD><TR>
+		<TR>	<TD><strong>${qna.qNO }.${qna.qnaTitle } </strong></TD><TR>
 		<TR>	<TD>내용:<strong>${qna.qnaContent }</strong></TD><TR>
 		<TR>	<td>질문 날짜:<strong>${qna.qnaWriteDate }</strong></td><TR>
 		<TR>	<td>답변:<strong>${qna.answer }</strong></td><TR>
@@ -41,10 +41,10 @@
 	<c:choose>
 		<c:when test="${memberInfo.member_id == 'admin' }">
 			<a
-				href="${contextPath}/qna/writeAnswerForm.do?qnaNO=${qna.qnaNO}"
+				href="${contextPath}/qna/writeAnswerForm.do?qNO=${qna.qNO}"
 				class="no-underline"><br>[답변하기]</a>
 			<a
-				href="${contextPath}/qna/removeQna.do?qnaNO=${qna.qnaNO}"
+				href="${contextPath}/qna/removeQna.do?qNO=${qna.qNO}"
 				class="no-underline">[삭제하기]</a>
 		</c:when>
 		<c:otherwise>

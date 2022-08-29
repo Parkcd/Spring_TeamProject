@@ -7,18 +7,19 @@ import org.springframework.stereotype.Component;
 @Component("qnaVO")
 public class QnaVO {
 	
-	private int qnaNO;
+	private int qNO;
 	private String qnaTitle;
 	private String qnaContent;
 	private Date  qnaWriteDate;
 	private Date answerDate;
 	private String answer;
+	private String qnaId;
 	
-	public int getQnaNO() {
-		return qnaNO;
+	public int getqNO() {
+		return qNO;
 	}
-	public void setQnaNO(int qnaNO) {
-		this.qnaNO = qnaNO;
+	public void setqNO(int qNO) {
+		this.qNO = qNO;
 	}
 	public String getQnaTitle() {
 		return qnaTitle;
@@ -50,6 +51,13 @@ public class QnaVO {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
+	public String getQnaId() {
+		return qnaId;
+	}
+	public void setQnaId(String qnaId) {
+		this.qnaId = qnaId;
+	}
+	
 	
 	
 	

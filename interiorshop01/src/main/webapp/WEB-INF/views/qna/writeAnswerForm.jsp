@@ -17,12 +17,10 @@
 		enctype="multipart/form-data">
 		<H3>답글 쓰기</H3>
 		<table>
-			
-		
-			<tr>
+			 <tr>
 				<td>번호</td>
 				<td><input name="qnaNO" type="text" size="40" 
-				value='<c:out value="${qna.qnaNO }"/>'	readonly="readonly"/></td>
+				value='<c:out value="${qna.qNO }"/>'	readonly="readonly"/></td>
 			</tr>
 
 			<tr>
@@ -39,10 +37,10 @@
 				<td>작성일자</td>
 				<td><input name="qnaWriteDate" type="text" size="40" 
 				value = "${qna.qnaWriteDate }"	readonly="readonly"/></td>
-			</tr>
+			</tr> 
 			<tr>
 				<td>답변</td>
-				<td><input name="qnaWriteDate" type="text" size="40" 
+				<td><input name="answer" type="text" size="40" 
 				value = "${qna.answer }"	/></td>
 			</tr>
 		</table>

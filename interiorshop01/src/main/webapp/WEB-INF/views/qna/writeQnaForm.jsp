@@ -23,6 +23,10 @@
 			</tr> -->
 
 			<tr>
+				<td>작성자</td>
+				<td><input name="qnaId" type="text" size="40" /></td>
+			</tr>
+			<tr>
 				<td>제목</td>
 				<td><input name="qnaTitle" type="text" size="40" /></td>
 			</tr>

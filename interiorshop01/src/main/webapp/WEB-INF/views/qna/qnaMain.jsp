@@ -26,14 +26,14 @@
 				</TR>
 			</c:when>
 			<c:otherwise>
-				<c:forEach var="qna" items="${listQna }">
+				<c:forEach var="qna" items="${listQna }" varStatus="status">
 					<TR>
 
-						<TD><strong>${qna.qnaNO }. </strong></TD>
+						<%-- <TD><strong>${qna.qNO }. </strong></TD> --%>
 						
-						
+						<td><c:out value="${status.count}" /></td>
 						<TD><strong><a
-								href="${contextPath}/qna/qnaDetail.do?qnaNO=${qna.qnaNO}">${qna.qnaTitle }</a></strong>
+								href="${contextPath}/qna/qnaDetail.do?qNO=${qna.qNO}">${qna.qnaTitle }</a></strong>
 						</TD>
 						<td><strong>${qna.qnaWriteDate }</strong></td>
 						

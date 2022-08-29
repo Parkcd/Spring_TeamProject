@@ -81,8 +81,8 @@
 			              order by joinDate desc
 					    ) t
 				)							
-			where				
-		recNum between 1 and 10		        
+			where			
+		recNum between 1 and 10		      
 	</select>
 	
     <select id="memberDetail" resultMap="memberResult"   parameterType="String"  >

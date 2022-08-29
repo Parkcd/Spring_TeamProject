@@ -16,16 +16,16 @@
 
   <select id="qnaList" resultMap="qnaesResult"   >
     <![CDATA[
-      SELECT  qnaNO,  qnaTitle, qnaContent, qnaWriteDate, answerDate, answer
-      from t_shopping_qna	
+      SELECT  qNO,qnaId,  qnaTitle, qnaContent, qnaWriteDate, answerDate, answer
+      from t_shopping_qna ORDER BY qNO DESC	
     ]]>
   </select>
   
   <select id="qnaOne" resultType="qnaVO">
   	<![CDATA[
-  		SELECT qnaNO, qnaTitle, qnaContent, qnaWriteDate, answerDate, answer
+  		SELECT qNO,qnaId, qnaTitle, qnaContent, qnaWriteDate, answerDate, answer
   		from t_shopping_qna	
-  		where qnaNO = #{qnaNO}
+  		where qNO = #{qNO}
   	]]>
   
   </select>
@@ -33,14 +33,14 @@
   <delete id="deleteQna" parameterType="Int">
   	<![CDATA[
   		DELETE from t_shopping_qna	
-  		where qnaNO = #{qnaNO}
+  		where qNO = #{qNO}
   	]]>
   </delete>
   
   <insert id="insertQna" parameterType="qnaVO">
   	<![CDATA[
-  		insert into t_shopping_qna(qnaNO, qnaTitle, qnaContent, qnaWriteDate)	
-  		values(#{qnaNO}, #{qnaTitle}, #{qnaContent}, sysdate)
+  		insert into t_shopping_qna(qNO,qnaId, qnaTitle, qnaContent, qnaWriteDate)	
+  		values(qnaNO.nextval, #{qnaId}, #{qnaTitle}, #{qnaContent}, sysdate)
   	]]>
   </insert>
   
@@ -48,8 +48,9 @@
   <update id="updateQna" parameterType="qnaVO">
   <![CDATA[
   		update t_shopping_qna set
-  		 answerDate = sysdate, answer = #{answer}
-  		where qnaNO = #{qnaNO}
+  		answer = #{answer}
+  		where qnaTitle = #{qnaTitle}
   	]]>
   </update>
+  
   </mapper>
