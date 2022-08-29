@@ -46,10 +46,10 @@ public class QnaControllerImpl implements QnaController{
 	//qna 상세보기
 	@Override
 	@RequestMapping(value = "qna/qnaDetail.do" , method = RequestMethod.GET)
-	public ModelAndView detailQna(@RequestParam("qnaNO")int qnaNO,HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView detailQna(@RequestParam("qNO")int qNO,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String)request.getAttribute("viewName");
-		System.out.println(qnaNO);
-		qnaVO  = qnaService.detailQna(qnaNO);
+		System.out.println(qNO);
+		qnaVO  = qnaService.detailQna(qNO);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(viewName);
@@ -72,8 +72,8 @@ public class QnaControllerImpl implements QnaController{
 	//qna삭제
 	@Override
 	@RequestMapping(value = "qna/removeQna.do" , method = RequestMethod.GET)
-	public ModelAndView removeQna(@RequestParam("qnaNO")int qnaNO,HttpServletRequest request) throws Exception {
-		qnaService.removeQna(qnaNO);
+	public ModelAndView removeQna(@RequestParam("qNO")int qNO,HttpServletRequest request) throws Exception {
+		qnaService.removeQna(qNO);
 		ModelAndView mav = new ModelAndView("redirect:/qna/qnaMain.do");
 		return mav;
 	}
@@ -94,6 +94,7 @@ public class QnaControllerImpl implements QnaController{
 	public ModelAndView modifyQna(@ModelAttribute("qna") QnaVO qna,HttpServletRequest request) throws Exception {
 		
 		int result = qnaService.modifyQna(qna);
+		System.out.println("!!!!!!!!!"+result);
 		ModelAndView mav = new ModelAndView("redirect:/qna/qnaMain.do");
 		return mav;
 	}
