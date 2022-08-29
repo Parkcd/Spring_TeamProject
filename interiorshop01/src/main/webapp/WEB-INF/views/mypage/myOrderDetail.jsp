@@ -6,9 +6,9 @@
 </head>
 <body>
 	<h1>1. 주문 상세정보</h1>
-	<table class="list_view">
+	<table class="tbl_edit01">
 		<tbody align=center>
-			<tr style="background: #33ff00">
+			<tr style="background: #e9f1f6">
 			     <td>주문번호 </td>
 			      <td>주문일자 </td>
 				<td colspan=2 class="fixed">주문상품명</td>

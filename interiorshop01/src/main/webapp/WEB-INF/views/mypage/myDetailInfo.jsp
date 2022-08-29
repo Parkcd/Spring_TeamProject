@@ -230,19 +230,19 @@ function fn_modify_member_info(attribute){
 <body>
 	<h3>내 상세 정보</h3>
 <form name="frm_mod_member">	
-	<div id="detail_table">
+	<div id="tbl_edit01">
 		<table>
 			<tbody>
-				<tr class="dot_line">
-					<td class="fixed_join">아이디</td>
+				<tr class="tbl_edit01" >
+					<td class="fixed_join" style="background-color:e9f1f6">아이디</td>
 					<td>
 						<input name="member_id" type="text" size="20" value="${memberInfo.member_id }"  disabled/>
 					</td>
 					 <td>
 					</td>
 				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join">비밀번호</td>
+				<tr class="tbl_edit01">
+					<td class="fixed_join" style="background-color:e9f1f6">비밀번호</td>
 					<td>
 					  <input name="member_pw" type="password" size="20" value="${memberInfo.member_pw }" />
 					</td>
@@ -250,16 +250,16 @@ function fn_modify_member_info(attribute){
 					  <input type="button" value="수정하기" onClick="fn_modify_member_info('member_pw')" />
 					</td>
 				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join">이름</td>
+				<tr class="tbl_edit01">
+					<td class="fixed_join" style="background-color:e9f1f6">이름</td>
 					<td>
 					  <input name="member_name" type="text" size="20" value="${memberInfo.member_name }"  disabled />
 					 </td>
 					 <td>
 					</td>
 				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join">성별</td>
+				<tr class="tbl_edit01">
+					<td class="fixed_join" style="background-color:e9f1f6">성별</td>
 					<td>
 					  <c:choose >
 					    <c:when test="${memberInfo.member_gender =='101' }">
@@ -278,8 +278,8 @@ function fn_modify_member_info(attribute){
 					  <input type="button" value="수정하기" onClick="fn_modify_member_info('member_gender')" />
 					</td>
 				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join">법정생년월일</td>
+				<tr class="tbl_edit01">
+					<td class="fixed_join" style="background-color:e9f1f6">법정생년월일</td>
 					<td>
 					   <select name="member_birth_y">
 					     <c:forEach var="i" begin="1" end="100">
@@ -334,8 +334,8 @@ function fn_modify_member_info(attribute){
 					  <input type="button" value="수정하기" onClick="fn_modify_member_info('member_birth')" />
 					</td>
 				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join">전화번호</td>
+				<tr class="tbl_edit01">
+					<td class="fixed_join" style="background-color:e9f1f6">전화번호</td>
 					<td>
 					    <select  name="tel1" id="tel1"  >
 							<option value="00">없음</option>
@@ -371,8 +371,8 @@ function fn_modify_member_info(attribute){
 					  <input type="button" value="수정하기" onClick="fn_modify_member_info('tel')" />
 					</td>
 				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join">휴대폰번호</td>
+				<tr class="tbl_edit01">
+					<td class="fixed_join" style="background-color:e9f1f6">휴대폰번호</td>
 					<td>
 					   <select  name="hp1" id="hp1">
 							<option>없음</option>
@@ -398,8 +398,8 @@ function fn_modify_member_info(attribute){
 					  <input type="button" value="수정하기" onClick="fn_modify_member_info('hp')" />
 					</td>	
 				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join">이메일<br>(e-mail)</td>
+				<tr class="tbl_edit01">
+					<td class="fixed_join" style="background-color:e9f1f6">이메일<br>(e-mail)</td>
 					<td>
 					   <input type="text" name="email1" size=10 value="${memberInfo.email1 }" /> @ <input type="text" size=10  name="email2" value="${memberInfo.email2 }" /> 
 					   <select name="select_email2" onChange=""  title="직접입력">
@@ -429,8 +429,8 @@ function fn_modify_member_info(attribute){
 					  <input type="button" value="수정하기" onClick="fn_modify_member_info('email')" />
 					</td>
 				</tr>
-				<tr class="dot_line">
-					<td class="fixed_join">주소</td>
+				<tr class="tbl_edit01">
+					<td class="fixed_join" style="background-color:e9f1f6">주소</td>
 					<td>
 					   <input type="text" id="zipcode" name="zipcode" size=5 value="${memberInfo.zipcode }" > <a href="javascript:execDaumPostcode()">우편번호검색</a>
 					  <br>

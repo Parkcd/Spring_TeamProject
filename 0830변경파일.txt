@@ -1,0 +1,15 @@
+src\main\webapp\WEB-INF\views\order\orderGoodsForm.jsp
+
+src\main\webapp\WEB-INF\views\order\orderResult.jsp
+
+src\main\webapp\WEB-INF\views\mypage\listMyOrderHistory.jsp
+
+src\main\webapp\WEB-INF\views\mypage\myOrderDetail.jsp
+
+src\main\webapp\WEB-INF\views\mypage\myDetailInfo.jsp
+
+src\main\webapp\WEB-INF\views\common\header.jsp
+
+src\main\webapp\resources\css\main.css
+
+변경 파일
