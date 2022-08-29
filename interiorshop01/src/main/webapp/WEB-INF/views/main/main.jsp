@@ -10,9 +10,9 @@
 
 <div id="ad_main_banner">
 	<ul class="bjqs">	 	
-	  <li><a href="https://ohou.se/" target="_blank"><img width="775" height="145" src="${contextPath}/resources/image/banner01.jpg"></a></li>
-		<li><a href="https://zipdoc.co.kr/" target="_blank"><img width="775" height="145" src="${contextPath}/resources/image/banner02.jpg"></a></li>
-		<li><a href="https://houseapp.co.kr/" target="_blank"><img width="775" height="145" src="${contextPath}/resources/image/banner03.jpg"></a></li> 
+	  <li><a href="https://ohou.se/" target="_blank"><img width="775" height="450" src="${contextPath}/resources/image/main/main1.png"></a></li>
+		<li><a href="https://zipdoc.co.kr/" target="_blank"><img width="775" height="450" src="${contextPath}/resources/image/main/main3.png"></a></li>
+		<li><a href="https://houseapp.co.kr/" target="_blank"><img width="775" height="450" src="${contextPath}/resources/image/main/main4.png"></a></li> 
 	</ul>
 </div>
 <div class="main_book">
