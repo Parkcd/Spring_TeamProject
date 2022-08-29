@@ -15,7 +15,7 @@
   <select id="boardList" resultMap="boardsResult"   >
     <![CDATA[
       SELECT  boardNO,  title, content, writeDate
-      from t_shopping_board		
+      from t_shopping_board	ORDER BY boardNO DESC		
     ]]>
   </select>
   
@@ -38,7 +38,7 @@
   <insert id="insertBoard" parameterType="boardVO">
   	<![CDATA[
   		insert into t_shopping_board(boardNO, title, content)	
-  		values(#{boardNO}, #{title}, #{content})
+  		values(board_sq.nextval, #{title}, #{content})
   	]]>
   </insert>
   
@@ -46,7 +46,7 @@
   <update id="updateBoard" parameterType="boardVO">
   <![CDATA[
   		update t_shopping_board set
-  		boardNO = #{boardNO}, title = #{title}, content = #{content}	, writeDate = sysdate
+  		boardNO = #{boardNO}, title = #{title}, content = #{content}
   		where boardNO = #{boardNO}
   	]]>
   </update>
