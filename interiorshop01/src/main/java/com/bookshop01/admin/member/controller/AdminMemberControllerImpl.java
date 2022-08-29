@@ -29,8 +29,8 @@ public class AdminMemberControllerImpl extends BaseController  implements AdminM
 	
 	@RequestMapping(value="/adminMemberMain.do" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView adminGoodsMain(@RequestParam Map<String, String> dateMap,
-									   @RequestParam String s_search_type,
-									   @RequestParam String t_search_word,
+									   @RequestParam(required=false ) String s_search_type,
+									   @RequestParam(required=false ) String t_search_word,
 			                           HttpServletRequest request, HttpServletResponse response)  throws Exception{
 		
 		
