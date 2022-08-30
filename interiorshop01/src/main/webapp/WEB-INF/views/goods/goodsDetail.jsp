@@ -225,12 +225,12 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 	<!-- 내용 들어 가는 곳 -->
 	<div id="container">
 		<ul class="tabs">
-			<li><a href="#tab1">책소개</a></li>
-			<li><a href="#tab2">저자소개</a></li>
+			<li><a href="#tab1">제품소개</a></li>
+<!-- 			<li><a href="#tab2">저자소개</a></li>
 			<li><a href="#tab3">책목차</a></li>
 			<li><a href="#tab4">출판사서평</a></li>
 			<li><a href="#tab5">추천사</a></li>
-			<li><a href="#tab6">리뷰</a></li>
+			<li><a href="#tab6">리뷰</a></li> -->
 		</ul>
 		<div class="tab_container">
 			<div class="tab_content" id="tab1">
