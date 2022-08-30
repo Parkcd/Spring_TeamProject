@@ -30,7 +30,7 @@ function init(){
 	}
 }
 </script>
-</c:when>
+</c:when> 
 </c:choose>
 <script>
 function search_order_history(search_period){	
@@ -268,200 +268,35 @@ function fn_detail_search(){
 </head>
 <body>
 	<H3>주문 조회</H3>
-	<form name="frm_delivery_list" action="${contextPath }/admin/admin.do" method="post">	
-		<table   >
-			<tbody>
-				<tr>
-					<td>
-						<input type="radio" name="r_search_option" value="simple_search" checked onClick="fn_enable_detail_search(this)"/> 간단조회 &nbsp;&nbsp;&nbsp;
-						<input type="radio" name="r_search_option" value="detail_search"  onClick="fn_enable_detail_search(this)" /> 상세조회 &nbsp;&nbsp;&nbsp;
-					</td>
-				</tr>
-				<tr>
-					<td>
-					  <select name="curYear">
-					     <c:forEach   var="i" begin="0" end="5">
-					      <c:choose>
-					        <c:when test="${endYear==endYear-i}">
-					          <option value="${endYear }" selected>${endYear  }</option>
-					        </c:when>
-					        <c:otherwise>
-					          <option value="${endYear-i }">${endYear-i }</option>
-					        </c:otherwise>
-					      </c:choose>
-					    </c:forEach>
-					</select>년 <select name="curMonth" >
-						 <c:forEach   var="i" begin="1" end="12">
-					      <c:choose>
-					        <c:when test="${endMonth==i }">
-					          <option value="${i }"  selected>${i }</option>
-					        </c:when>
-					        <c:otherwise>
-					          <option value="${i }">${i }</option>
-					        </c:otherwise>
-					      </c:choose>
-					    </c:forEach>					
-					</select>월
-					
-					 <select name="curDay">
-					  <c:forEach   var="i" begin="1" end="31">
-					      <c:choose>
-					        <c:when test="${endDay==i }">
-					          <option value="${i }"  selected>${i }</option>
-					        </c:when>
-					        <c:otherwise>
-					          <option value="${i }">${i }</option>
-					        </c:otherwise>
-					      </c:choose>
-					    </c:forEach>	
-					</select>일  &nbsp;이전&nbsp;&nbsp;&nbsp;&nbsp; 
-					<a href="javascript:search_order_history('today')">
-					   <img   src="${contextPath}/resources/image/btn_search_one_day.jpg">
-					</a>
-					<a href="javascript:search_order_history('one_week')">
-					   <img   src="${contextPath}/resources/image/btn_search_1_week.jpg">
-					</a>
-					<a href="javascript:search_order_history('two_week')">
-					   <img   src="${contextPath}/resources/image/btn_search_2_week.jpg">
-					</a>
-					<a href="javascript:search_order_history('one_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_1_month.jpg">
-					</a>
-					<a href="javascript:search_order_history('two_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_2_month.jpg">
-					</a>
-					<a href="javascript:search_order_history('three_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_3_month.jpg">
-					</a>
-					<a href="javascript:search_order_history('four_month')">
-					   <img   src="${contextPath}/resources/image/btn_search_4_month.jpg">
-					</a>
-					&nbsp;까지 조회
-					</td>
-				</tr>
-				
+	<form name="frm_delivery_list" action="${contextPath }/admin/order/adminOrderMain.do" method="get">	
+		<table cellpadding="10" cellspacing="10"  >
 				<tr>
 				  <td>
-					조회 기간:
-					<select name="beginYear" disabled>
-					 <c:forEach   var="i" begin="0" end="5">
-					      <c:choose>
-					        <c:when test="${beginYear==beginYear-i }">
-					          <option value="${beginYear-i }" selected>${beginYear-i  }</option>
-					        </c:when>
-					        <c:otherwise>
-					          <option value="${beginYear-i }">${beginYear-i }</option>
-					        </c:otherwise>
-					      </c:choose>
-					    </c:forEach>
-					</select>년 
-					<select name="beginMonth" disabled >
-						 <c:forEach   var="i" begin="1" end="12">
-					      <c:choose>
-					        <c:when test="${beginMonth==i }">
-					          <option value="${i }"  selected>${i }</option>
-					        </c:when>
-					        <c:otherwise>
-					          <c:choose>
-					            <c:when test="${i <10 }">
-					              <option value="0${i }">0${i }</option>
-					            </c:when>
-					            <c:otherwise>
-					            <option value="${i }">${i }</option>
-					            </c:otherwise>
-					          </c:choose>
-					        </c:otherwise>
-					      </c:choose>
-					    </c:forEach>					
-					</select>월
-					 <select name="beginDay" disabled >
-					  <c:forEach   var="i" begin="1" end="31">
-					      <c:choose>
-					        <c:when test="${beginDay==i }">
-					          <option value="${i }"  selected>${i }</option>
-					        </c:when>
-					        <c:otherwise>
-					          <c:choose>
-					            <c:when test="${i <10 }">
-					              <option value="0${i }">0${i }</option>
-					            </c:when>
-					            <c:otherwise>
-					            <option value="${i }">${i }</option>
-					            </c:otherwise>
-					          </c:choose>
-					        </c:otherwise>
-					      </c:choose>
-					    </c:forEach>	
-					</select>일  &nbsp; ~
-					
-					<select name="endYear" disabled >
-					 <c:forEach   var="i" begin="0" end="5">
-					      <c:choose>
-					        <c:when test="${endYear==endYear-i }">
-					          <option value="${2016-i }" selected>${2016-i  }</option>
-					        </c:when>
-					        <c:otherwise>
-					          <option value="${2016-i }">${2016-i }</option>
-					        </c:otherwise>
-					      </c:choose>
-					    </c:forEach>
-					</select>년 
-					<select name="endMonth" disabled >
-						 <c:forEach   var="i" begin="1" end="12">
-					      <c:choose>
-					        <c:when test="${endMonth==i }">
-					          <option value="${i }"  selected>${i }</option>
-					        </c:when>
-					        <c:otherwise>
-					          <c:choose>
-					            <c:when test="${i <10 }">
-					              <option value="0${i }">0${i }</option>
-					            </c:when>
-					            <c:otherwise>
-					            <option value="${i }">${i }</option>
-					            </c:otherwise>
-					          </c:choose>
-					        </c:otherwise>
-					      </c:choose>
-					    </c:forEach>					
-					</select>월
-					 <select name="endDay" disabled >
-					  <c:forEach   var="i" begin="1" end="31">
-					      <c:choose>
-					        <c:when test="${endDay==i }">
-					          <option value="${i }"  selected>${i }</option>
-					        </c:when>
-					        <c:otherwise>
-					          <c:choose>
-					            <c:when test="${i <10 }">
-					              <option value="0${i }">0${i }</option>
-					            </c:when>
-					            <c:otherwise>
-					            <option value="${i }">${i }</option>
-					            </c:otherwise>
-					          </c:choose>
-					        </c:otherwise>
-					      </c:choose>
-					    </c:forEach>	
-					</select>
-												 
+					조회한 기간:<input  type="text"  size="4" name="beginYear" value="${beginYear}" />년
+							<input  type="text"  size="4" name="beginMonth" value="${beginMonth}"/>월	
+							 <input  type="text"  size="4" name="beginDay" value="${beginDay}"/>일	
+							 &nbsp; ~
+							<input  type="text"  size="4" value="${endYear }" />년 
+							<input  type="text"  size="4" value="${endMonth }"/>월	
+							 <input  type="text"  size="4" value="${endDay }"/>일							 
 				  </td>
-				</tr>
+				</tr>			
 				<tr>
 				  <td>
-				    <select name="s_search_type" disabled >
+				    <select name="s_search_type">
 						<option value="all" checked>전체</option>
 						<option value="orderer_name">주문자이름</option>
 						<option value="orderer_id">주문자아이디</option>
 						<option value="orderer_hp">주문자휴대폰번호</option>
 						<option value="orderer_goods">주문상품품명</option>
 					</select>
-					<input  type="text"  size="30" name="t_search_word" disabled />  
-					<input   type="button"  value="조회" name="btn_search" onClick="fn_detail_search()" disabled  />
+					<input  type="text"  size="30" name="t_search_word"  />  
+					<!-- <input   type="button"  value="조회" name="btn_search" onClick="fn_detail_search()" disabled  /> -->
+				  	<input   type="submit"  value="조회" name="btn_search" /> 
 				  </td>
 				</tr>				
 			</tbody>
-		</table>
+	</table>
 		<div class="clear">
 	</div>
 	
