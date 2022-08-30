@@ -29,11 +29,11 @@
 	<div class="tab_container" id="container">
 		<ul class="tabs">
 			<li><a href="#tab1">상품정보</a></li>
-			<li><a href="#tab2">상품목차</a></li>
-			<li><a href="#tab3">상품저자소개</a></li>
+<!-- 			<li><a href="#tab2">상품목차</a></li>
+			<li><a href="#tab3">상품저자소개</a></li> -->
 			<li><a href="#tab4">상품소개</a></li>
-			<li><a href="#tab5">출판사 상품 평가</a></li>
-			<li><a href="#tab6">추천사</a></li>
+<!-- 			<li><a href="#tab5">출판사 상품 평가</a></li>
+			<li><a href="#tab6">추천사</a></li> -->
 			<li><a href="#tab7">상품이미지</a></li>
 		</ul>
 		<div class="tab_container">
@@ -53,11 +53,11 @@
 			</tr>
 			
 			<tr>
-				<td >저자</td>
+				<td >작성자</td>
 				<td><input name="goods_writer" type="text" size="40" /></td>
 			</tr>
 			<tr>
-				<td >출판사</td>
+				<td >제조사</td>
 				<td><input name="goods_publisher" type="text" size="40" /></td>
 			</tr>
 			<tr>
@@ -81,7 +81,7 @@
 			</tr>
 			
 			<tr>
-				<td >제품 총 페이지수</td>
+				<td >제품무게</td>
 				<td><input name="goods_total_page" type="text" size="40" /></td>
 			</tr>
 			
