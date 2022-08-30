@@ -82,7 +82,7 @@ public abstract class BaseController  {
 		endDate = endYear +"-"+ endMonth +"-"+endDay;
 		
 		if(fixedSearchPeriod == null) {
-			cal.add(cal.MONTH,-4);
+			cal.add(cal.YEAR,-4);
 		}else if(fixedSearchPeriod.equals("one_week")) {
 			cal.add(Calendar.DAY_OF_YEAR, -7);
 		}else if(fixedSearchPeriod.equals("two_week")) {
