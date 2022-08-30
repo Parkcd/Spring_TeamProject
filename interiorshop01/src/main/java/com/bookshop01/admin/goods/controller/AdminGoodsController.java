@@ -11,7 +11,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 public interface AdminGoodsController {
-	public ModelAndView adminGoodsMain(@RequestParam Map<String, String> dateMap,HttpServletRequest request, HttpServletResponse response)  throws Exception;
+	public ModelAndView adminGoodsMain(@RequestParam Map<String, String> dateMap,
+			@RequestParam(required = false) String search_condition, // s_search_type을 가져온다
+			@RequestParam(required = false) String search_word, HttpServletRequest request, HttpServletResponse response)  throws Exception;
 	public ResponseEntity addNewGoods(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)  throws Exception;
 	public ModelAndView removeGoods(@RequestParam("goods_id") String goods_id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity modifyGoodsInfo( @RequestParam("goods_id") String goods_id,

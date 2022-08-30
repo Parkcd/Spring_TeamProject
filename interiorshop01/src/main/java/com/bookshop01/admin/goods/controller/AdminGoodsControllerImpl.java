@@ -38,6 +38,8 @@ public class AdminGoodsControllerImpl extends BaseController  implements AdminGo
 	
 	@RequestMapping(value="/adminGoodsMain.do" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView adminGoodsMain(@RequestParam Map<String, String> dateMap,
+			@RequestParam(required = false) String search_condition, // s_search_type을 가져온다
+			@RequestParam(required = false) String search_word, // t__search_word를 가져온다
 			                           HttpServletRequest request, HttpServletResponse response)  throws Exception {
 		String viewName=(String)request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
@@ -45,16 +47,30 @@ public class AdminGoodsControllerImpl extends BaseController  implements AdminGo
 		session=request.getSession();
 		session.setAttribute("side_menu", "admin_mode"); //마이페이지 사이드 메뉴로 설정한다.
 		
+		
+		System.out.println("!!!!"+dateMap);
+		
 		String fixedSearchPeriod = dateMap.get("fixedSearchPeriod");
 		String section = dateMap.get("section");
 		String pageNum = dateMap.get("pageNum");
 		String beginDate=null,endDate=null;
+		String beginYear = dateMap.get("beginYear");
+		String beginMonth = dateMap.get("beginMonth");
+		String beginDay = dateMap.get("beginDay");
 		
 		String [] tempDate=calcSearchPeriod(fixedSearchPeriod).split(",");
-		beginDate=tempDate[0];
+		
 		endDate=tempDate[1];
-		dateMap.put("beginDate", beginDate);
+		
 		dateMap.put("endDate", endDate);
+		
+		if (beginYear == null) {
+			beginYear = "2018";
+			beginMonth = "01";
+			beginDay = "01";
+		}
+		
+		beginDate = beginYear + "-" + beginMonth + "-" + beginDay;
 		
 		Map<String,Object> condMap=new HashMap<String,Object>();
 		if(section== null) {
@@ -67,6 +83,8 @@ public class AdminGoodsControllerImpl extends BaseController  implements AdminGo
 		condMap.put("pageNum",pageNum);
 		condMap.put("beginDate",beginDate);
 		condMap.put("endDate", endDate);
+		condMap.put("search_condition", search_condition);// s_search_type condMap에 전달
+		condMap.put("search_word", search_word);// t_search_word condMap에 전달
 		List<GoodsVO> newGoodsList=adminGoodsService.listNewGoods(condMap);
 		mav.addObject("newGoodsList", newGoodsList);
 		
