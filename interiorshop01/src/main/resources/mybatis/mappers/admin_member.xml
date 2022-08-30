@@ -59,7 +59,7 @@
 			    select rowNum as recNum,t.*
 			       from (
 			              select  *  from t_shopping_member 
-			              where  joinDate between TO_DATE('2018/01/01','yyyy-mm-dd') and TO_DATE('2022/08/25','yyyy-mm-dd')
+			              where  joinDate between TO_DATE(#{beginDate},'yyyy-mm-dd') and TO_DATE(#{endDate},'yyyy-mm-dd')
 			                 <if test="s_search_type=='all'">  
 			                     
 			                  </if> 

@@ -227,9 +227,9 @@ function fn_detail_search(){
 			<tbody>		
 			 <tr>
 				  <td>
-					조회한 기간:<input  type="text"  size="4" value="${beginYear}" />년
-							<input  type="text"  size="4" value="${beginMonth}"/>월	
-							 <input  type="text"  size="4" value="${beginDay}"/>일	
+					조회한 기간:<input  type="text"  size="4" name="beginYear" value="${beginYear}" />년
+							<input  type="text"  size="4" name="beginMonth" value="${beginMonth}"/>월	
+							 <input  type="text"  size="4" name="beginDay" value="${beginDay}"/>일	
 							 &nbsp; ~
 							<input  type="text"  size="4" value="${endYear }" />년 
 							<input  type="text"  size="4" value="${endMonth }"/>월	

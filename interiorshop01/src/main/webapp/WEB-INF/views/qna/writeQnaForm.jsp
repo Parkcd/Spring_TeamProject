@@ -23,16 +23,16 @@
 			</tr> -->
 
 			<tr>
-				<td>작성자</td>
-				<td><input name="qnaId" type="text" size="40" /></td>
+				
+				<td><input name="qnaId" type="text" style="width: 300px; height: 20px" value = "${memberInfo.member_id }" readonly="readonly"/></td>
 			</tr>
 			<tr>
-				<td>제목</td>
-				<td><input name="qnaTitle" type="text" size="40" /></td>
+				
+				<td><input name="qnaTitle" placeholder="제목을 입력해주세요" type="text" style="width: 300px; height: 20px" /></td>
 			</tr>
 			<tr>
-				<td>내용</td>
-				<td><input name="qnaContent" type="text" size="40" /></td>
+				
+				<td><textarea name="qnaContent" placeholder="내용을 입력해주세요" type="text" style="width: 600px; height: 600px" ></textarea></td>
 			</tr>
 		</table>
 		<td align=center><input type="submit" value="작성하기"></td>

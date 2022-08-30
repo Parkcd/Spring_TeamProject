@@ -83,6 +83,8 @@ public class QnaControllerImpl implements QnaController{
 	@RequestMapping(value = "qna/writeQna.do" , method = RequestMethod.POST)
 	public ModelAndView addQna(@ModelAttribute("qna") QnaVO qna,HttpServletRequest request) throws Exception {
 		int result = 0;
+		HttpSession session = request.getSession();
+		session.setAttribute("memberInfo", memberVO);
 		result = qnaService.addQna(qna);
 		ModelAndView mav = new ModelAndView("redirect:/qna/qnaMain.do");
 		return mav;

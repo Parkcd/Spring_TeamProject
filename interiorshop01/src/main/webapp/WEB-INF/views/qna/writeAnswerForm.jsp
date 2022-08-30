@@ -35,8 +35,8 @@
 			</tr>
 			<tr>
 				<td>작성일자</td>
-				<td><input name="qnaWriteDate" type="text" size="40" 
-				value = "${qna.qnaWriteDate }"	readonly="readonly"/></td>
+				<td><input name="answerDate" type="text" size="40" 
+				value = "${qna.answerDate }"	readonly="readonly"/></td>
 			</tr> 
 			<tr>
 				<td>답변</td>
