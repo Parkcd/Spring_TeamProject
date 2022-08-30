@@ -39,8 +39,8 @@
   
   <insert id="insertQna" parameterType="qnaVO">
   	<![CDATA[
-  		insert into t_shopping_qna(qNO,qnaId, qnaTitle, qnaContent, qnaWriteDate)	
-  		values(qnaNO.nextval, #{qnaId}, #{qnaTitle}, #{qnaContent}, sysdate)
+  		insert into t_shopping_qna(qNO,qnaId, qnaTitle, qnaContent)	
+  		values(qnaNO.nextval, #{qnaId}, #{qnaTitle}, #{qnaContent})
   	]]>
   </insert>
   
@@ -48,7 +48,7 @@
   <update id="updateQna" parameterType="qnaVO">
   <![CDATA[
   		update t_shopping_qna set
-  		answer = #{answer}
+  		answer = #{answer}, answerDate = sysdate
   		where qnaTitle = #{qnaTitle}
   	]]>
   </update>
