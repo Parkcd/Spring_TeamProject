@@ -44,21 +44,34 @@ public class AdminOrderControllerImpl extends BaseController  implements AdminOr
 	@Override
 	@RequestMapping(value="/adminOrderMain.do" ,method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView adminOrderMain(@RequestParam Map<String, String> dateMap,
+			@RequestParam(required = false) String s_search_type, // s_search_type을 가져온다
+			@RequestParam(required = false) String t_search_word, // t__search_word를 가져온다
 			                          HttpServletRequest request, HttpServletResponse response)  throws Exception {
 		String viewName=(String)request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 
+		System.out.println("!!!!!!!!!!"+dateMap);
 		String fixedSearchPeriod = dateMap.get("fixedSearchPeriod");
 		String section = dateMap.get("section");
 		String pageNum = dateMap.get("pageNum");
 		String beginDate=null,endDate=null;
+		String beginYear = dateMap.get("beginYear");
+		String beginMonth = dateMap.get("beginMonth");
+		String beginDay = dateMap.get("beginDay");
 		
 		String [] tempDate=calcSearchPeriod(fixedSearchPeriod).split(",");
-		beginDate=tempDate[0];
+		/* beginDate=tempDate[0]; */
 		endDate=tempDate[1];
-		dateMap.put("beginDate", beginDate);
+		/* dateMap.put("beginDate", beginDate); */
 		dateMap.put("endDate", endDate);
 		
+		if (beginYear == null) {
+			beginYear = "2018";
+			beginMonth = "01";
+			beginDay = "01";
+		}
+		
+		beginDate = beginYear + "-" + beginMonth + "-" + beginDay;
 		
 		HashMap<String,Object> condMap=new HashMap<String,Object>();
 		if(section== null) {
@@ -71,14 +84,16 @@ public class AdminOrderControllerImpl extends BaseController  implements AdminOr
 		condMap.put("pageNum",pageNum);
 		condMap.put("beginDate",beginDate);
 		condMap.put("endDate", endDate);
+		condMap.put("s_search_type", s_search_type);// s_search_type condMap에 전달
+		condMap.put("t_search_word", t_search_word);// t_search_word condMap에 전달
 		List<OrderVO> newOrderList=adminOrderService.listNewOrder(condMap);
 		mav.addObject("newOrderList",newOrderList);
 		
-		String beginDate1[]=beginDate.split("-");
+	
 		String endDate2[]=endDate.split("-");
-		mav.addObject("beginYear",beginDate1[0]);
-		mav.addObject("beginMonth",beginDate1[1]);
-		mav.addObject("beginDay",beginDate1[2]);
+		mav.addObject("beginYear", beginYear);// beginDate1의 배열 영 번째 값을 beginYear이라는 키로 mav전달
+		mav.addObject("beginMonth", beginMonth);// beginDate1의 배열 첫 번째 값을 beginMonth라는 키로 mav전달
+		mav.addObject("beginDay", beginDay);// beginDate1의 배열 두번 째 값을 beginDay라는 키로 mav전달
 		mav.addObject("endYear",endDate2[0]);
 		mav.addObject("endMonth",endDate2[1]);
 		mav.addObject("endDay",endDate2[2]);
