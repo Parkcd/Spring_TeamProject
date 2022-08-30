@@ -21,7 +21,7 @@
 	<TABLE class="list_view">
 		
 		<TR>	<TD><strong>작성자:${qna.qnaId } </strong></TD><TR>
-		<TR>	<TD><strong>${qna.qNO }.${qna.qnaTitle } </strong></TD><TR>
+		<TR>	<TD><strong>${qna.qNO } </strong><strong style="border-left-width:0.1em; border-left-style:solid; border-left-color:#000">${qna.qnaTitle } </strong></TD><TR>
 		<TR>	<TD>내용:<strong>${qna.qnaContent }</strong></TD><TR>
 		<TR>	<td>질문 날짜:<strong>${qna.qnaWriteDate }</strong></td><TR>
 		<TR>	<td>답변:<strong>${qna.answer }</strong></td><TR>

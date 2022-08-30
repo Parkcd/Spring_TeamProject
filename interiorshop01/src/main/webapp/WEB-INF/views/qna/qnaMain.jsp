@@ -51,9 +51,16 @@
 
 
 	</TABLE>
-	
-			<a href="${contextPath}/qna/writeQnaForm.do"
+	 <c:choose>
+		     <c:when test="${isLogOn==true and not empty memberInfo }">
+			  <a href="${contextPath}/qna/writeQnaForm.do"
 				class="no-underline"><br>[질문하기]</a>
+			 </c:when>
+			 <c:otherwise>
+			   게시글을 작성하려면 로그인 해야합니다 <a href="${contextPath}/member/loginForm.do">[로그인]</a> 
+			 </c:otherwise>
+			</c:choose>
+			
 	
 
 
