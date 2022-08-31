@@ -77,9 +77,9 @@
 	<div class="clear"></div>
 	<div id="sorting">
 		<ul>
-			<li><a class="active" href="#">베스트 셀러</a></li>
-			<li><a href="#">최신 출간</a></li>
-			<li><a style="border: currentColor; border-image: none;" href="#">최근 등록</a></li>
+			<li><a class="active" href="#">제품</a></li>
+			<!-- <li><a href="#">최신 출간</a></li>
+			<li><a style="border: currentColor; border-image: none;" href="#">최근 등록</a></li> -->
 		</ul>
 	</div>
 	<table id="list_view">
@@ -107,14 +107,14 @@
 				               ${discounted_price}원
 						</strong><br>(10% 할인)
 					</td>
-					<td><input type="checkbox" value=""></td>
+					<!-- <td><input type="checkbox" value=""></td>
 					<td class="buy_btns">
 						<UL>
 							<li><a href="#">장바구니</a></li>
 							<li><a href="#">구매하기</a></li>
 							<li><a href="#">비교하기</a></li>
 						</UL>
-					</td>
+					</td> -->
 			</tr>
 			</c:forEach>
 		</tbody>
