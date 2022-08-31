@@ -3,6 +3,10 @@
 	isELIgnored="false"%>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <!DOCTYPE html >
 <html>
 <head>
@@ -37,21 +41,63 @@ function fn_cancel_order(order_id){
 	}
 }
 
+$(function() {
+    //input을 datepicker로 선언
+    $("#datepicker1,#datepicker2").datepicker({
+        dateFormat: 'yy-mm-dd' //달력 날짜 형태
+        ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+        ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
+        ,changeYear: true //option값 년 선택 가능
+        ,changeMonth: true //option값  월 선택 가능                
+        ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+        ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+        ,buttonImageOnly: true //버튼 이미지만 깔끔하게 보이게함
+        ,buttonText: "선택" //버튼 호버 텍스트              
+        ,yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
+        ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
+        ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
+        ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
+        ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
+        ,minDate: "-5Y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+        ,maxDate: "+5y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
+    });                    
+    
+    //초기값을 오늘 날짜로 설정해줘야 합니다.
+    $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
+    $('input[name="dates"]').daterangepicker();
+});
+
+$(function() {
+	  $('input[name="daterange"]').daterangepicker({
+	    opens: 'left'
+	  }, function(start, end, label) {
+	    console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+	  });
+	  
+	//create a new date range picker
+	  $('#daterange').daterangepicker({ startDate: 'beginDate', endDate: 'endDate' });
+
+	  //change the selected date range of that picker
+	  $('#daterange').data('daterangepicker').setStartDate('beginDate');
+	  $('#daterange').data('daterangepicker').setEndDate('endDate');
+	});
+
 </script>
 </head>
 <body>
 	<H3>주문 배송 조회</H3>
-	<form  method="post">	
+	<form value="/selectMyOrderHistoryList.do" method="post">	
 		<table>
 			<tbody>
 				<tr>
-					<td>
-						<input type="radio" name="simple"  checked/> 간단조회 &nbsp;&nbsp;&nbsp;
-						<input type="radio" name="simple" /> 일간  &nbsp;&nbsp;&nbsp;
-						<input type="radio" name="simple" /> 월간
-					</td>
+					<p>조회 기간
+				        <input type="text" name="daterange"/>
+				        <!-- <input type="text" name="beginDate" id="datepicker1">
+				        <input type="text" name="endDate" id="datepicker2"> -->
+				        <input type="submit" value="검색">
+				    </p>
 				</tr>
-				<tr>
+				<%-- <tr>
 					<td>
 					  <select name="curYear">
 					    <c:forEach   var="i" begin="0" end="5" >
@@ -135,16 +181,16 @@ function fn_cancel_order(order_id){
 							<input  type="text"  size="4" value="${endMonth}"/>월	
 							 <input  type="text"  size="4" value="${endDay}"/>일							 
 				  </td>
-				</tr>
+				</tr> --%>
 			</tbody>
 		</table>
 		<div class="clear">
 	</div>
 </form>	
 <div class="clear"></div>
-<table class="list_view">
+<table class="tbl_edit01">
 		<tbody align=center >
-			<tr style="background:#33ff00" >
+			<tr style="background:#e9f1f6; " >
 				<td class="fixed" >주문번호</td>
 				<td class="fixed">주문일자</td>
 				<td>주문내역</td>
