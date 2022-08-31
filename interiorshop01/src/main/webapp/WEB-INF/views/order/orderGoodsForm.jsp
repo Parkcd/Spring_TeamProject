@@ -261,6 +261,7 @@ function fn_show_order_detail(){
 	var h_total_order_goods_qty=document.getElementById("h_total_order_goods_qty");
 	var h_total_sales_price=document.getElementById("h_total_sales_price");
 	var h_final_total_Price=document.getElementById("h_final_total_Price");
+	var use_point = document.getElementById("use_pnt");
 	var h_orderer_name=document.getElementById("h_orderer_name");
 	var i_receiver_name=document.getElementById("receiver_name");
 	
@@ -294,7 +295,7 @@ function fn_show_order_detail(){
 	}
 	
 	
-	total_order_goods_price=h_final_total_Price.value;
+	total_order_goods_price=h_final_total_Price.value - use_point.value;
 	total_order_goods_qty=h_total_order_goods_qty.value;
 	
 	for(var i=0; i<r_delivery_method.length;i++){
@@ -471,6 +472,20 @@ function changePoint(amt,pnt,min,unit){
 
 	}
 	document.getElementById("result_pnt").innerHTML = amt - v_point; //최종 결제금액 = 결제금액 - 사용할 포인트
+	
+	var v_uses = document.getElementsByName("uses_pnt"); //사용가능 마일리지, 남은 포인트 값 설정
+	for (var i = 0; i < v_uses.length; i++) {
+
+		v_uses[i].innerHTML = amt - v_point; //= 전체 포인트 중에 사용할 포인트빼고 남은 포인트
+
+	}
+	
+	var v_result = document.getElementsByName("result_pnt"); //사용가능 마일리지, 남은 포인트 값 설정
+	for (var i = 0; i < v_result.length; i++) {
+
+		v_result[i].innerHTML = v_point; //= 전체 포인트 중에 사용할 포인트빼고 남은 포인트
+
+	}
 }
 
 function fn_process_pay_order(){
@@ -744,7 +759,7 @@ function fn_process_pay_order(){
   </colgroup>
   <tbody>
     <tr>
-      <th>상품 금액</th>
+     	<th>상품 금액</th>
       <%-- <td>
 					<p id="p_totalPrice">${total_order_price}원</p> <input
 					id="h_totalPrice" type="hidden" value="${total_order_price}" />
@@ -761,7 +776,7 @@ function fn_process_pay_order(){
         <span><input type="checkbox" id="chk_use" onclick="chkPoint(${final_total_order_price },${memberInfo.cashback_point },1000,100)"> 전체 포인트 사용</span>
       </td>
     </tr>
-    <tr>     
+         
       <th>총 결제 금액</th>
       <td> 
       	<p class="bold txt_red"> <span class="bold txt_red" id="result_pnt">${final_total_order_price } 원</span></p>
@@ -770,6 +785,50 @@ function fn_process_pay_order(){
   </tbody>
 </table>
 
+   <div class="clear"></div>
+	<br>
+	<table width=80% class="list_view" style="background: #ccffff">
+		<tbody>
+			<tr align=center class="fixed">
+				<td class="fixed">총 상품수</td>
+				<td>총 상품금액</td>
+				<td></td>
+				<td>총 배송비</td>
+				<td></td>
+				<td>총 할인 금액</td>
+				<td></td>
+				<td>최종 결제금액</td>
+			</tr>
+			<tr cellpadding=40 align=center>
+				<td id="">
+					<p id="p_totalNum">${total_order_goods_qty}개</p> 
+					<input id="h_total_order_goods_qty" type="hidden" value="${total_order_goods_qty}" />
+				</td>
+				<td>
+					<p id="p_totalPrice">${total_order_price}</p> <input
+					id="h_totalPrice" type="hidden" value="${total_order_price}" />
+				</td>
+				<td><IMG width="25" alt=""
+					src="${pageContext.request.contextPath}/resources/image/plus.jpg"></td>
+				<td>
+					<p id="p_totalDelivery">${total_delivery_price }</p> <input
+					id="h_totalDelivery" type="hidden" value="${total_delivery_price}" />
+				</td>
+				<td>
+				<img width="25" alt="" 	src="${pageContext.request.contextPath}/resources/image/minus.jpg"></td>
+				<td>
+					<p id="p_totalSalesPrice" name="result_pnt">${total_discount_price }</p> 
+					<input id="h_total_sales_price" type="hidden" value="${total_discount_price}" />
+				</td>
+				<td><img width="25" alt="" src="${pageContext.request.contextPath}/resources/image/equal.jpg"></td>
+				<td>
+					<p id="p_final_totalPrice" name="uses_pnt" style="font-size:15px;">
+						${final_total_order_price }
+					</p> <input id="h_final_total_Price" type="hidden" value="${final_total_order_price}" style="font-size:15px;" />
+				</td>
+			</tr>
+		</tbody>
+	</table>
    <div class="clear"></div>
 	<br>
 	<br>
