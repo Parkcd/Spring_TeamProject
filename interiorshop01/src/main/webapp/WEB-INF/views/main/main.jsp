@@ -134,7 +134,7 @@
 </div>
 <div class="clear"></div>
 <div id="ad_sub_banner">
-	<img width="770" height="117" src="${contextPath}/resources/image/sub_banner01.jpg">
+	<img width="770" height="117" src="${contextPath}/resources/image/younglim.jpg">
 </div>
 
 
