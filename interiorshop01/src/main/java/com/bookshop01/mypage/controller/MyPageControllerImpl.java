@@ -34,11 +34,11 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 	
 	@Override
 	@RequestMapping(value="/myPageMain.do" ,method = RequestMethod.GET)
-	public ModelAndView myPageMain(@RequestParam(required = false,value="message")  String message,
+	public ModelAndView myPageMain(@RequestParam(required = false,value="message")  String message, // myPageMain 
 			   HttpServletRequest request, HttpServletResponse response)  throws Exception {
 		HttpSession session=request.getSession();
 		session=request.getSession();
-		session.setAttribute("side_menu", "my_page"); //¸¶ÀÌÆäÀÌÁö »çÀÌµå ¸Þ´º·Î ¼³Á¤ÇÑ´Ù.
+		session.setAttribute("side_menu", "my_page"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½Þ´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		
 		String viewName=(String)request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
@@ -88,7 +88,7 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 		dateMap.put("member_id", member_id);
 		List<OrderVO> myOrderHistList=myPageService.listMyOrderHistory(dateMap);
 		
-		String beginDate1[]=beginDate.split("-"); //°Ë»öÀÏÀÚ¸¦ ³â,¿ù,ÀÏ·Î ºÐ¸®ÇØ¼­ È­¸é¿¡ Àü´ÞÇÕ´Ï´Ù.
+		String beginDate1[]=beginDate.split("-"); //ï¿½Ë»ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½,ï¿½ï¿½,ï¿½Ï·ï¿½ ï¿½Ð¸ï¿½ï¿½Ø¼ï¿½ È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 		String endDate1[]=endDate.split("-");
 		mav.addObject("beginYear",beginDate1[0]);
 		mav.addObject("beginMonth",beginDate1[1]);
@@ -163,7 +163,7 @@ public class MyPageControllerImpl extends BaseController  implements MyPageContr
 		
 		memberMap.put("member_id", member_id);
 		
-		//¼öÁ¤µÈ È¸¿ø Á¤º¸¸¦ ´Ù½Ã ¼¼¼Ç¿¡ ÀúÀåÇÑ´Ù.
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		memberVO=(MemberVO)myPageService.modifyMyInfo(memberMap);
 		session.removeAttribute("memberInfo");
 		session.setAttribute("memberInfo", memberVO);

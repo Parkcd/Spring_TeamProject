@@ -29,21 +29,21 @@
 	<div class="tab_container" id="container">
 		<ul class="tabs">
 			<li><a href="#tab1">상품정보</a></li>
-			<li><a href="#tab2">상품목차</a></li>
-			<li><a href="#tab3">상품저자소개</a></li>
-			<li><a href="#tab4">상품소개</a></li>
-			<li><a href="#tab5">출판사 상품 평가</a></li>
-			<li><a href="#tab6">추천사</a></li>
+			<li><a href="#tab2">상품소개목차</a></li>
+			<li><a href="#tab3">발주 사원소개</a></li>
+			<li><a href="#tab4">상품 소개</a></li>
+			<li><a href="#tab5">상품 후기</a></li>
+			<li><a href="#tab6">연관 상품</a></li>
 			<li><a href="#tab7">상품이미지</a></li>
 		</ul>
 		<div class="tab_container">
 			<div class="tab_content" id="tab1">
 				<table >
 			<tr >
-				<td width=200 >제품분류</td>
+				<td width=200 >인기상품</td>
 				<td width=500><select name="goods_sort">
-						<option value="베스트셀러" selected>베스트셀러
-						<option value="일반">일반
+						<option value="베스트셀러" selected>yes
+						<option value="일반">no
 					</select>
 				</td>
 			</tr>
@@ -53,11 +53,11 @@
 			</tr>
 			
 			<tr>
-				<td >저자</td>
+				<td >발주 사원</td>
 				<td><input name="goods_writer" type="text" size="40" /></td>
 			</tr>
 			<tr>
-				<td >출판사</td>
+				<td >가구 회사</td>
 				<td><input name="goods_publisher" type="text" size="40" /></td>
 			</tr>
 			<tr>
@@ -76,7 +76,7 @@
 			</tr>
 			
 			<tr>
-				<td >제품출판일</td>
+				<td >제품 발주일자</td>
 				<td><input  name="goods_published_date"  type="date" size="40" /></td>
 			</tr>
 			
@@ -125,46 +125,46 @@
 				</table>	
 			</div>
 			<div class="tab_content" id="tab2">
-				<H4>책목차</H4>
+				<H4>상품 소개 목차</H4>
 				<table>	
 				 <tr>
-					<td >책목차</td>
+					<td >상품 소개 목차</td>
 					<td><textarea  rows="100" cols="80" name="goods_contents_order"></textarea></td>
 				</tr>
 				</table>	
 			</div>
 			<div class="tab_content" id="tab3">
-				<H4>제품 저자 소개</H4>
+				<H4>발주 사원 소개</H4>
 				 <table>
   				 <tr>
-					<td>제품 저자 소개</td>
+					<td>발주 사원 소개</td>
 					<td><textarea  rows="100" cols="80" name="goods_writer_intro"></textarea></td>
 			    </tr>
 			   </table>
 			</div>
 			<div class="tab_content" id="tab4">
-				<H4>제품소개</H4>
+				<H4>상품소개</H4>
 				<table>
 					<tr>
-						<td >제품소개</td>
+						<td >상품소개</td>
 						<td><textarea  rows="100" cols="80" name="goods_intro"></textarea></td>
 				    </tr>
 			    </table>
 			</div>
 			<div class="tab_content" id="tab5">
-				<H4>출판사 제품 평가</H4>
+				<H4>상품 후기</H4>
 				<table>
 				 <tr>
-					<td>출판사 제품 평가</td>
+					<td>상품 후기</td>
 					<td><textarea  rows="100" cols="80" name="goods_publisher_comment"></textarea></td>
 			    </tr>
 			</table>
 			</div>
 			<div class="tab_content" id="tab6">
-				<H4>추천사</H4>
+				<H4>연관 제품</H4>
 				 <table>
 					 <tr>
-					   <td>추천사</td>
+					   <td>연관 제품</td>
 					    <td><textarea  rows="100" cols="80" name="goods_recommendation"></textarea></td>
 				    </tr>
 			    </table>
@@ -190,7 +190,7 @@
 	 <table>
 	 <tr>
 			  <td align=center>
-				  <input  type="submit" value="상품 등록하기"> 
+				  <input  type="submit" value="등록하기"> 
 			  </td>
 			</tr>
 	 </table>

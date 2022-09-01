@@ -36,31 +36,31 @@ public class CartControllerImpl extends BaseController implements CartController
 	
 	@RequestMapping(value="/myCartList.do" ,method = RequestMethod.GET)
 	public ModelAndView myCartMain(HttpServletRequest request, HttpServletResponse response)  throws Exception {
-		String viewName=(String)request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
-		HttpSession session=request.getSession();
-		MemberVO memberVO=(MemberVO)session.getAttribute("memberInfo");
-		String member_id=memberVO.getMember_id();
-		cartVO.setMember_id(member_id);
-		Map<String ,List> cartMap=cartService.myCartList(cartVO);
-		session.setAttribute("cartMap", cartMap);//��ٱ��� ��� ȭ�鿡�� ��ǰ �ֹ� �� ����ϱ� ���ؼ� ��ٱ��� ����� ���ǿ� �����Ѵ�.
+		String viewName=(String)request.getAttribute("viewName"); // view 안의 jsp 이름을 불러와 viewName을 대입
+		ModelAndView mav = new ModelAndView(viewName); // viewName을 매개변수로 ModelAndview 객체 생성.
+		HttpSession session=request.getSession(); // Session 정보를 얻어와 session 에 대입
+		MemberVO memberVO=(MemberVO)session.getAttribute("memberInfo"); //memberInfo 정보를 얻어와 memberVO에 대입
+		String member_id=memberVO.getMember_id(); // member_id에 MemberVO에 있는 getMember_id 값 가져와 대입 
+		cartVO.setMember_id(member_id); // setMember_id 메소드에 member_id 매개변수로 수행한 결과 저장.
+		Map<String ,List> cartMap=cartService.myCartList(cartVO); // catMap에 myCarList메소드를 cartVO 매개변수로 넣고 수행한 결과 대입
+		session.setAttribute("cartMap", cartMap); // key를 cartMap value를 cartMap 정보를 session Map에 대입
 		//mav.addObject("cartMap", cartMap);
-		return mav;
+		return mav; // mav 반환
 	}
 	@RequestMapping(value="/addGoodsInCart.do" ,method = RequestMethod.POST,produces = "application/text; charset=utf8")
 	public  @ResponseBody String addGoodsInCart(@RequestParam("goods_id") int goods_id,
 			                    HttpServletRequest request, HttpServletResponse response)  throws Exception{
-		HttpSession session=request.getSession();
-		memberVO=(MemberVO)session.getAttribute("memberInfo");
-		String member_id=memberVO.getMember_id();
+		HttpSession session=request.getSession(); // session 정보 불러옴.
+		memberVO=(MemberVO)session.getAttribute("memberInfo"); // memberInfo 를 매개변수로 session값 불러와 memberVO에 저장
+		String member_id=memberVO.getMember_id(); // memberVO에 있는 getMember_id 불러와 member_id에 대입.
 		
-		cartVO.setMember_id(member_id);
-		//īƮ ������� �̹� ��ϵ� ��ǰ���� �Ǻ��Ѵ�.
-		cartVO.setGoods_id(goods_id);
-		cartVO.setMember_id(member_id);
-		boolean isAreadyExisted=cartService.findCartGoods(cartVO);
-		System.out.println("isAreadyExisted:"+isAreadyExisted);
-		if(isAreadyExisted==true){
+		cartVO.setMember_id(member_id); // setMember_id를 member_id 매개변수로 수행.
+	
+		cartVO.setGoods_id(goods_id); // setGoods_id를 goods_id 매개변수로 수행.
+		cartVO.setMember_id(member_id); // setMember_id를 member_id 매개변수로 수행.
+		boolean isAreadyExisted=cartService.findCartGoods(cartVO); // findcartGoods에 cartVO 정보를 매개변수로 넣고 수행한 결과 isAreadyExisted에 대입
+		System.out.println("isAreadyExisted:"+isAreadyExisted); // isAreadyExisted 정보 출력 
+		if(isAreadyExisted==true){ // 카트에 이미 존재하는지 여부 체크하여 존재하면 already_existed 반환하고 없으면 addGoodsInCart메소드 수행 후 add_success 반환
 			return "already_existed";
 		}else{
 			cartService.addGoodsInCart(cartVO);
@@ -72,15 +72,15 @@ public class CartControllerImpl extends BaseController implements CartController
 	public @ResponseBody String  modifyCartQty(@RequestParam("goods_id") int goods_id,
 			                                   @RequestParam("cart_goods_qty") int cart_goods_qty,
 			                                    HttpServletRequest request, HttpServletResponse response)  throws Exception{
-		HttpSession session=request.getSession();
-		memberVO=(MemberVO)session.getAttribute("memberInfo");
-		String member_id=memberVO.getMember_id();
-		cartVO.setGoods_id(goods_id);
-		cartVO.setMember_id(member_id);
-		cartVO.setCart_goods_qty(cart_goods_qty);
-		boolean result=cartService.modifyCartQty(cartVO);
+		HttpSession session=request.getSession(); // Session 정보 가져옴.
+		memberVO=(MemberVO)session.getAttribute("memberInfo"); // memberInfo를 매개변수로 session 정보 memberVO에 저장
+		String member_id=memberVO.getMember_id(); // memberVO에서 getMember_id 수행한 값 member_id 에 대입
+		cartVO.setGoods_id(goods_id); // goods_id 매개변수로 setGoods_id 수행
+		cartVO.setMember_id(member_id); // member_id 매개변수로 setMember_id 수행
+		cartVO.setCart_goods_qty(cart_goods_qty); // cart_goods_qty 매개변수로 setCart_goods_qty 수행   
+		boolean result=cartService.modifyCartQty(cartVO); // cartVO 매개변수로 modifyCartQty 수행 후 결과 result에 저장
 		
-		if(result==true){
+		if(result==true){ // result 가 true면 modify_success 수정완료 message 반환하고 아니면 modify_failed 반환  
 		   return "modify_success";
 		}else{
 			  return "modify_failed";	
@@ -88,12 +88,12 @@ public class CartControllerImpl extends BaseController implements CartController
 		
 	}
 	
-	@RequestMapping(value="/removeCartGoods.do" ,method = RequestMethod.POST)
+	@RequestMapping(value="/removeCartGoods.do" ,method = RequestMethod.POST) 
 	public ModelAndView removeCartGoods(@RequestParam("cart_id") int cart_id,
 			                          HttpServletRequest request, HttpServletResponse response)  throws Exception{
-		ModelAndView mav=new ModelAndView();
-		cartService.removeCartGoods(cart_id);
-		mav.setViewName("redirect:/cart/myCartList.do");
-		return mav;
+		ModelAndView mav=new ModelAndView(); // ModelAndView 객체 생성
+		cartService.removeCartGoods(cart_id); // cart_id 매개변수로 removeCartGoods 메소드 수행
+		mav.setViewName("redirect:/cart/myCartList.do");  // mav.setViewName으로 redirect 결과 저장 
+		return mav; // mav 반환
 	}
 }

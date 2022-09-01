@@ -32,7 +32,7 @@ public class MemberControllerImpl extends BaseController implements MemberContro
 	
 	@Override
 	@RequestMapping(value="/login.do" ,method = RequestMethod.POST)
-	public ModelAndView login(@RequestParam Map<String, String> loginMap,
+	public ModelAndView login(@RequestParam Map<String, String> loginMap, // login ì •ë³´ ê°€ì ¸ì™€ session ë° viewName ì €ì¥ í›„ ë°˜í™˜ 
 			                  HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		 memberVO=memberService.login(loginMap);
@@ -52,16 +52,16 @@ public class MemberControllerImpl extends BaseController implements MemberContro
 			
 			
 		}else{
-			String message="¾ÆÀÌµğ³ª  ºñ¹Ğ¹øÈ£°¡ Æ²¸³´Ï´Ù. ´Ù½Ã ·Î±×ÀÎÇØÁÖ¼¼¿ä";
+			String message="ï¿½ï¿½ï¿½Ìµï¿½  ï¿½ï¿½Ğ¹ï¿½È£ï¿½ï¿½ Æ²ï¿½ï¿½ï¿½Ï´ï¿½. ï¿½Ù½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 			mav.addObject("message", message);
 			mav.setViewName("/member/loginForm");
 		}
-		return mav;
+		return mav; // mav ë°˜í™˜
 	}
 	
 	@Override
 	@RequestMapping(value="/logout.do" ,method = RequestMethod.GET)
-	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception { // logout ì‹œ session ì¢…ë£Œ ë° viewName ë°˜í™˜
 		ModelAndView mav = new ModelAndView();
 		HttpSession session=request.getSession();
 		session.setAttribute("isLogOn", false);
@@ -72,7 +72,7 @@ public class MemberControllerImpl extends BaseController implements MemberContro
 	
 	@Override
 	@RequestMapping(value="/addMember.do" ,method = RequestMethod.POST)
-	public ResponseEntity addMember(@ModelAttribute("memberVO") MemberVO _memberVO,
+	public ResponseEntity addMember(@ModelAttribute("memberVO") MemberVO _memberVO, // addMember ìˆ˜í–‰ ì‹œ íšŒì›ê°€ì… ê¸°ëŠ¥ ìˆ˜í–‰
 			                HttpServletRequest request, HttpServletResponse response) throws Exception {
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
@@ -83,13 +83,13 @@ public class MemberControllerImpl extends BaseController implements MemberContro
 		try {
 		    memberService.addMember(_memberVO);
 		    message  = "<script>";
-		    message +=" alert('È¸¿ø °¡ÀÔÀ» ¸¶ÃÆ½À´Ï´Ù.·Î±×ÀÎÃ¢À¸·Î ÀÌµ¿ÇÕ´Ï´Ù.');";
+		    message +=" alert('È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ½ï¿½ï¿½Ï´ï¿½.ï¿½Î±ï¿½ï¿½ï¿½Ã¢ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Õ´Ï´ï¿½.');";
 		    message += " location.href='"+request.getContextPath()+"/member/loginForm.do';";
 		    message += " </script>";
 		    
 		}catch(Exception e) {
 			message  = "<script>";
-		    message +=" alert('ÀÛ¾÷ Áß ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù. ´Ù½Ã ½ÃµµÇØ ÁÖ¼¼¿ä');";
+		    message +=" alert('ï¿½Û¾ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½. ï¿½Ù½ï¿½ ï¿½Ãµï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½');";
 		    message += " location.href='"+request.getContextPath()+"/member/memberForm.do';";
 		    message += " </script>";
 			e.printStackTrace();
@@ -99,7 +99,7 @@ public class MemberControllerImpl extends BaseController implements MemberContro
 	}
 	
 	@Override
-	@RequestMapping(value="/overlapped.do" ,method = RequestMethod.POST)
+	@RequestMapping(value="/overlapped.do" ,method = RequestMethod.POST) // id ì¤‘ë³µì²´í¬ ê¸°ëŠ¥
 	public ResponseEntity overlapped(@RequestParam("id") String id,HttpServletRequest request, HttpServletResponse response) throws Exception{
 		ResponseEntity resEntity = null;
 		String result = memberService.overlapped(id);

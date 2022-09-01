@@ -124,9 +124,9 @@ function  calcPeriod(search_period){
 	</DIV>
 </form>	
 <DIV class="clear"></DIV>
-<TABLE class="tbl_edit01">
-		<TBODY align=center >
-			<tr class="mp_short" >
+
+		<TABLE class="list_view">
+			<tr align=center bgcolor="#ffcc00">
 				<td>상품번호</td>
 				<td>상품이름</td>
 				<td>저자</td>
@@ -199,6 +199,7 @@ function  calcPeriod(search_period){
 		</TBODY>
 		
 	</TABLE>
+
 	<DIV class="clear"></DIV>
 	<br><br><br>
 <H3>상품등록하기</H3>

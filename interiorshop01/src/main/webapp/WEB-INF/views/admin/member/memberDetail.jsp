@@ -273,7 +273,7 @@ function fn_delete_member(member_id ,del_yn){
 </head>
 
 <body>
-	<h3>내 상세 정보</h3>
+	<h3>회원 상세 정보</h3>
 <form name="frm_mod_member">	
 	<div id="detail_table">
 		<table>
@@ -509,7 +509,7 @@ function fn_delete_member(member_id ,del_yn){
 				    <input  type="button"  value="회원복원" onClick="fn_delete_member('${member_info.member_id }','N')">   
 				  </c:when>
 				  <c:when  test="${member_info.del_yn=='N' }">
-				    <input  type="button"  value="회원탈퇴" onClick="fn_delete_member('${member_info.member_id }','Y')">
+				    <input  type="button"  value="회원삭제" onClick="fn_delete_member('${member_info.member_id }','Y')">
 				  </c:when>
 				  
 				</c:choose>

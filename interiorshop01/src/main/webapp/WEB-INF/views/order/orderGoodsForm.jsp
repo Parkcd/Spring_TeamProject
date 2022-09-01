@@ -27,7 +27,6 @@
 	width: 100%;
 	/* background-color:rgba(0,0,0,0.8); */
 }
-
 #popup_order_detail {
 	z-index: 3;
 	position: fixed;
@@ -39,7 +38,6 @@
 	background-color:#ccff99;
 	border: 2px solid  #0000ff;
 }
-
 #close {
 	z-index: 4;
 	float: right;
@@ -52,12 +50,10 @@
         new daum.Postcode({
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
                 // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
                 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
                 var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
                 var extraRoadAddr = ''; // 도로명 조합형 주소 변수
-
                 // 법정동명이 있을 경우 추가한다. (법정리는 제외)
                 // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
                 if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
@@ -75,22 +71,18 @@
                 if(fullRoadAddr !== ''){
                     fullRoadAddr += extraRoadAddr;
                 }
-
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('zipcode').value = data.zonecode; //5자리 새우편번호 사용
                 document.getElementById('roadAddress').value = fullRoadAddr;
                 document.getElementById('jibunAddress').value = data.jibunAddress;
-
                 // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
                 if(data.autoRoadAddress) {
                     //예상되는 도로명 주소에 조합형 주소를 추가한다.
                     var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
                     document.getElementById('guide').innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-
                 } else if(data.autoJibunAddress) {
                     var expJibunAddr = data.autoJibunAddress;
                     document.getElementById('guide').innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-
                 } else {
                     document.getElementById('guide').innerHTML = '';
                 }
@@ -102,7 +94,6 @@
   {
     init();
   }
-
   function init(){
   	var form_order=document.form_order;
   	var h_tel1=form_order.h_tel1;
@@ -120,16 +111,13 @@
 		var e_hp1 = document.getElementById("hp1");
 		var e_hp2 = document.getElementById("hp2");
 		var e_hp3 = document.getElementById("hp3");
-
 		var e_tel1 = document.getElementById("tel1");
 		var e_tel2 = document.getElementById("tel2");
 		var e_tel3 = document.getElementById("tel3");
-
 		var e_zipcode = document.getElementById("zipcode");
 		var e_roadAddress = document.getElementById("roadAddress");
 		var e_jibunAddress = document.getElementById("jibunAddress");
 		var e_namujiAddress = document.getElementById("namujiAddress");
-
 		e_receiver_name.value = "";
 		e_hp1.value = 0;
 		e_hp2.value = "";
@@ -142,31 +130,25 @@
 		e_jibunAddress.value = "";
 		e_namujiAddress.value = "";
 	}
-
 	function restore_all() {
 		var e_receiver_name = document.getElementById("receiver_name");
 		var e_hp1 = document.getElementById("hp1");
 		var e_hp2 = document.getElementById("hp2");
 		var e_hp3 = document.getElementById("hp3");
-
 		var e_tel1 = document.getElementById("tel1");
 		var e_tel2 = document.getElementById("tel2");
 		var e_tel3 = document.getElementById("tel3");
-
 		var e_zipcode = document.getElementById("zipcode");
 		var e_roadAddress = document.getElementById("roadAddress");
 		var e_jibunAddress = document.getElementById("jibunAddress");
 		var e_namujiAddress = document.getElementById("namujiAddress");
-
 		var h_receiver_name = document.getElementById("h_receiver_name");
 		var h_hp1 = document.getElementById("h_hp1");
 		var h_hp2 = document.getElementById("h_hp2");
 		var h_hp3 = document.getElementById("h_hp3");
-
 		var h_tel1 = document.getElementById("h_tel1");
 		var h_tel2 = document.getElementById("h_tel2");
 		var h_tel3 = document.getElementById("h_tel3");
-
 		var h_zipcode = document.getElementById("h_zipcode");
 		var h_roadAddress = document.getElementById("h_roadAddress");
 		var h_jibunAddress = document.getElementById("h_jibunAddress");
@@ -176,7 +158,6 @@
 		e_hp1.value = h_hp1.value;
 		e_hp2.value = h_hp2.value;
 		e_hp3.value = h_hp3.value;
-
 		e_tel1.value = h_tel1.value;
 		e_tel2.value = h_tel2.value;
 		e_tel3.value = h_tel3.value;
@@ -184,7 +165,6 @@
 		e_roadAddress.value = h_roadAddress.value;
 		e_jibunAddress.value = h_jibunAddress.value;
 		e_namujiAddress.value = h_namujiAddress.value;
-
 	}
 	
 function fn_pay_phone(){
@@ -195,34 +175,27 @@ function fn_pay_phone(){
 	e_card.style.visibility="hidden";
 	e_phone.style.visibility="visible";
 }
-
 function fn_pay_card(){
 	var e_card=document.getElementById("tr_pay_card");
 	var e_phone=document.getElementById("tr_pay_phone");
 	e_card.style.visibility="visible";
 	e_phone.style.visibility="hidden";
 }
-
 function imagePopup(type) {
 	if (type == 'open') {
 		// 팝업창을 연다.
 		jQuery('#layer').attr('style', 'visibility:visible');
-
 		// 페이지를 가리기위한 레이어 영역의 높이를 페이지 전체의 높이와 같게 한다.
 		jQuery('#layer').height(jQuery(document).height());
 	}
-
 	else if (type == 'close') {
-
 		// 팝업창을 닫는다.
 		jQuery('#layer').attr('style', 'visibility:hidden');
 	}
 }
-
 var goods_id="";
 var goods_title="";
 var goods_fileName="";
-
 var order_goods_qty
 var each_goods_price;
 var total_order_goods_price;
@@ -232,11 +205,9 @@ var receiver_name
 var hp1;
 var hp2;
 var hp3;
-
 var tel1;
 var tel2;
 var tel3;
-
 var receiver_hp_num;
 var receiver_tel_num;
 var delivery_address;
@@ -247,7 +218,6 @@ var pay_method;
 var card_com_name;
 var card_pay_month;
 var pay_orderer_hp_num;
-
 function fn_show_order_detail(){
 	goods_id="";
 	goods_title="";
@@ -261,6 +231,7 @@ function fn_show_order_detail(){
 	var h_total_order_goods_qty=document.getElementById("h_total_order_goods_qty");
 	var h_total_sales_price=document.getElementById("h_total_sales_price");
 	var h_final_total_Price=document.getElementById("h_final_total_Price");
+	var use_point = document.getElementById("use_pnt");
 	var h_orderer_name=document.getElementById("h_orderer_name");
 	var i_receiver_name=document.getElementById("receiver_name");
 	
@@ -294,7 +265,7 @@ function fn_show_order_detail(){
 	}
 	
 	
-	total_order_goods_price=h_final_total_Price.value;
+	total_order_goods_price=h_final_total_Price.value - use_point.value;
 	total_order_goods_qty=h_total_order_goods_qty.value;
 	
 	for(var i=0; i<r_delivery_method.length;i++){
@@ -361,7 +332,6 @@ function fn_show_order_detail(){
 	var i_namujiAddress=document.getElementById("namujiAddress");
 	var i_delivery_message=document.getElementById("delivery_message");
 	var i_pay_method=document.getElementById("pay_method");
-
 //	alert("총주문 금액:"+total_order_goods_price);
 	order_goods_qty=h_order_goods_qty.value;
 	//order_total_price=h_order_total_price.value;
@@ -416,12 +386,10 @@ function fn_show_order_detail(){
 	p_pay_method.innerHTML=pay_method;
 	imagePopup('open');
 }
-
 function chkPoint(amt,pnt,min,unit) {
 	//input값을 전체 마일리지로 설정 > minusPoint 
 	//amt : 최초 결제 금액 / pnt : 사용가능,남은 포인트 / min : 사용 가능 최소 포인트 / unit : 사용단위
 	var v_point = 0; //사용할 포인트 (input 입력값)
-
 	if (document.getElementById("chk_use").checked)  
 	{
 		if (pnt < min)  //최소 사용 단위보다 작을 때
@@ -430,17 +398,14 @@ function chkPoint(amt,pnt,min,unit) {
 		}else {
 			v_point = pnt - pnt%unit; //사용할 포인트 = 전체 마일리지 중 최소단위 이하 마일리지를 뺀 포인트
 		}
-
 		if(pnt > amt ){ //결제금액보다 포인트가 더 클 때
 			v_point = amt; //사용할 포인트는 결제금액과 동일하게 설정
 		}
 		
 	}
 	document.getElementById("use_pnt").value = v_point; //input 값 설정
-
 	changePoint(amt,pnt,min,unit);
 }
-
 function changePoint(amt,pnt,min,unit){
 	//input값을 불러옴 > left_pnt 변경 > 최종결제 변경
 	//amt : 최초 결제 금액 / pnt : 사용가능,남은 포인트 / min : 사용 가능 최소 포인트 / unit : 사용단위
@@ -450,12 +415,10 @@ function changePoint(amt,pnt,min,unit){
 		v_point = pnt;
 		document.getElementById("use_pnt").value = v_point; //input 값 재설정
 	}
-
 	if(v_point > amt ){ //결제금액보다 포인트가 더 클 때
 		v_point = amt; //사용할 포인트는 결제금액과 동일하게 설정
 		document.getElementById("use_pnt").value = v_point; //input 값 재설정
 	}
-
 	if (v_point < min)  //최소 사용 단위보다 작을 때
 	{
 		v_point = 0; 
@@ -463,16 +426,22 @@ function changePoint(amt,pnt,min,unit){
 	}else {
 		v_point = v_point - v_point%unit; //사용할 포인트 = 사용할 마일리지 중 최소단위 이하 마일리지를 뺀 포인트
 	}
-
 	var v_left = document.getElementsByName("left_pnt"); //사용가능 마일리지, 남은 포인트 값 설정
 	for (var i = 0; i < v_left.length; i++) {
-
 		v_left[i].innerHTML = pnt - v_point; //= 전체 포인트 중에 사용할 포인트빼고 남은 포인트
-
 	}
 	document.getElementById("result_pnt").innerHTML = amt - v_point; //최종 결제금액 = 결제금액 - 사용할 포인트
+	
+	var v_uses = document.getElementsByName("uses_pnt"); //사용가능 마일리지, 남은 포인트 값 설정
+	for (var i = 0; i < v_uses.length; i++) {
+		v_uses[i].innerHTML = amt - v_point; //= 전체 포인트 중에 사용할 포인트빼고 남은 포인트
+	}
+	
+	var v_result = document.getElementsByName("result_pnt"); //사용가능 마일리지, 남은 포인트 값 설정
+	for (var i = 0; i < v_result.length; i++) {
+		v_result[i].innerHTML = v_point; //= 전체 포인트 중에 사용할 포인트빼고 남은 포인트
+	}
 }
-
 function fn_process_pay_order(){
 	
 	alert("최종 결제하기");
@@ -539,7 +508,6 @@ function fn_process_pay_order(){
     formObj.appendChild(i_receiver_tel1);
     formObj.appendChild(i_receiver_tel2);
     formObj.appendChild(i_receiver_tel3);
-
     formObj.appendChild(i_delivery_address);
     formObj.appendChild(i_delivery_message);
     formObj.appendChild(i_delivery_method);
@@ -550,7 +518,6 @@ function fn_process_pay_order(){
     formObj.appendChild(i_card_pay_month);
     formObj.appendChild(i_pay_orderer_hp_num);
     
-
     document.body.appendChild(formObj); 
     formObj.method="post";
     formObj.action="${contextPath}/order/payToOrderGoods.do";
@@ -744,7 +711,7 @@ function fn_process_pay_order(){
   </colgroup>
   <tbody>
     <tr>
-      <th>상품 금액</th>
+     	<th>상품 금액</th>
       <%-- <td>
 					<p id="p_totalPrice">${total_order_price}원</p> <input
 					id="h_totalPrice" type="hidden" value="${total_order_price}" />
@@ -761,7 +728,7 @@ function fn_process_pay_order(){
         <span><input type="checkbox" id="chk_use" onclick="chkPoint(${final_total_order_price },${memberInfo.cashback_point },1000,100)"> 전체 포인트 사용</span>
       </td>
     </tr>
-    <tr>     
+         
       <th>총 결제 금액</th>
       <td> 
       	<p class="bold txt_red"> <span class="bold txt_red" id="result_pnt">${final_total_order_price } 원</span></p>
@@ -770,6 +737,50 @@ function fn_process_pay_order(){
   </tbody>
 </table>
 
+   <div class="clear"></div>
+	<br>
+	<table width=80% class="list_view" style="background: #ccffff">
+		<tbody>
+			<tr align=center class="fixed">
+				<td class="fixed">총 상품수</td>
+				<td>총 상품금액</td>
+				<td></td>
+				<td>총 배송비</td>
+				<td></td>
+				<td>총 할인 금액</td>
+				<td></td>
+				<td>최종 결제금액</td>
+			</tr>
+			<tr cellpadding=40 align=center>
+				<td id="">
+					<p id="p_totalNum">${total_order_goods_qty}개</p> 
+					<input id="h_total_order_goods_qty" type="hidden" value="${total_order_goods_qty}" />
+				</td>
+				<td>
+					<p id="p_totalPrice">${total_order_price}</p> <input
+					id="h_totalPrice" type="hidden" value="${total_order_price}" />
+				</td>
+				<td><IMG width="25" alt=""
+					src="${pageContext.request.contextPath}/resources/image/plus.jpg"></td>
+				<td>
+					<p id="p_totalDelivery">${total_delivery_price }</p> <input
+					id="h_totalDelivery" type="hidden" value="${total_delivery_price}" />
+				</td>
+				<td>
+				<img width="25" alt="" 	src="${pageContext.request.contextPath}/resources/image/minus.jpg"></td>
+				<td>
+					<p id="p_totalSalesPrice" name="result_pnt">${total_discount_price }</p> 
+					<input id="h_total_sales_price" type="hidden" value="${total_discount_price}" />
+				</td>
+				<td><img width="25" alt="" src="${pageContext.request.contextPath}/resources/image/equal.jpg"></td>
+				<td>
+					<p id="p_final_totalPrice" name="uses_pnt" style="font-size:15px;">
+						${final_total_order_price }
+					</p> <input id="h_final_total_Price" type="hidden" value="${final_total_order_price}" style="font-size:15px;" />
+				</td>
+			</tr>
+		</tbody>
+	</table>
    <div class="clear"></div>
 	<br>
 	<br>
@@ -973,7 +984,3 @@ function fn_process_pay_order(){
 			</div>
 			<div class="clear"></div>	
 			<br> 
-			
-			
-			
-			

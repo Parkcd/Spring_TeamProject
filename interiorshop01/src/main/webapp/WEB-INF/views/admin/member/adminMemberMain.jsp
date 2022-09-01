@@ -6,6 +6,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 
 <html>
 <head>
@@ -259,16 +261,19 @@ function fn_detail_search(){
 	</div>
 	
 <div class="clear"></div>
-<table class="list_view">
-		<tbody align=center >
-			<tr align=center bgcolor="#ffcc00">
-				<td class="fixed" >회원아이디</td>
-				<td class="fixed">회원이름</td>
-				<td>휴대폰번호</td>
-				<td>주소</td>
-				<td>가입일</td>
-				<td>탈퇴여부</td>
-			</tr>
+
+<br>
+<table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th class="fixed" style="width=110px">아이디</th>
+        <th class="fixed">이름</th>
+        <th>휴대폰</th>
+        <th>주소</th>
+        <th>가입일</th>        
+        <th>탈퇴</th>        
+      </tr>
+    </thead>
    <c:choose>
      <c:when test="${empty member_list}">			
 			<tr>
@@ -282,7 +287,7 @@ function fn_detail_search(){
 	            <tr >       
 					<td width=10%>
 					
-					  <a href="${pageContext.request.contextPath}/admin/member/memberDetail.do?member_id=${item.member_id}">
+					  <a href="${contextPath}/admin/member/memberDetail.do?member_id=${item.member_id}">
 					     <strong>${item.member_id}</strong>
 					  </a>
 					</td>
@@ -315,22 +320,27 @@ function fn_detail_search(){
 				</tr>
 		</c:forEach>
 	</c:otherwise>
-  </c:choose>		
+  </c:choose>	
+  </table>
+
+<br>
+
+
          <tr>
-             <td colspan=8 class="fixed">
+             <td colspan=8 class="fixed" align="center">
                  <c:forEach   var="page" begin="1" end="10" step="1" >
 		         <c:if test="${section >1 && page==1 }">
 		          <a href="${contextPath}/admin/member/adminMemberMain.do?chapter=${section-1}&pageNum=${(section-1)*10 +1 }">&nbsp;pre&nbsp;</a>
 		         </c:if>
-		          <a href="${contextPath}/admin/member/adminMemberMain.do?chapter=${section}&pageNum=${page}">${(section-1)*10 +page } </a>
+		          <a href="${contextPath}/admin/member/adminMemberMain.do?chapter=${section}&pageNum=${page}">${(section-1)*10 +page } -</a>
 		         <c:if test="${page ==10 }">
 		          <a href="${contextPath}/admin/member/adminMemberMain.do?chapter=${section+1}&pageNum=${section*10+1}">&nbsp; next</a>
 		         </c:if> 
 	      		</c:forEach> 
            </td>
         </tr>  		   
-		</tbody>
-	</table>
+		
+	
   </form>   	
 	<div class="clear"></div>
 <%-- <c:choose>

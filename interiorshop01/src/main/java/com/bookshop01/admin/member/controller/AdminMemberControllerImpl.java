@@ -31,9 +31,7 @@ public class AdminMemberControllerImpl extends BaseController implements AdminMe
 			@RequestParam(required = false) String t_search_word, // t__search_word를 가져온다
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		String viewName = (String) request.getAttribute("viewName");// viewName을 저장
-		ModelAndView mav = new ModelAndView(viewName);// 저장한 viewName을 mav에 담는다
-
+		
 		String fixedSearchPeriod = dateMap.get("fixedSearchPeriod");// fixedSerchPerod라는 변수에 dateMap에서 가져온
 																	// foxedSerchPeriod를 담는다
 		String section = dateMap.get("section");// section변수에 dateMap에서 가져온 section을 담는다
@@ -45,7 +43,7 @@ public class AdminMemberControllerImpl extends BaseController implements AdminMe
 		String beginMonth = dateMap.get("beginMonth");
 		String beginDay = dateMap.get("beginDay");
 
-		System.out.println("!!!!받은 비긴데이터" + beginYear);
+		System.out.println("dateMap = " + dateMap);
 
 		String[] tempDate = calcSearchPeriod(fixedSearchPeriod).split(",");// calcSerchReriod(fixedSearchPeriod)함수에서
 																			// 가져온값을 ,를 기준으로 나눈뒤 tempDate라는배열 변수에 저장한다.
@@ -89,15 +87,11 @@ public class AdminMemberControllerImpl extends BaseController implements AdminMe
 
 		ArrayList<MemberVO> member_list = adminMemberService.listMember(condMap);// (위에서 값들을저장한 condMap을
 																					// Service.listMember에 넣은 상태)
+		String viewName = (String) request.getAttribute("viewName");// viewName을 저장
+		ModelAndView mav = new ModelAndView(viewName);// 저장한 viewName을 mav에 담는다
+
 		mav.addObject("member_list", member_list);// mav에 service에서 전달받은 member_list를 member_list로 저장
-		/*
-		 * mav.addObject("s_search_type",s_search_type);
-		 * mav.addObject("t_search_word",t_search_word);
-		 */
-
-		System.out.println(s_search_type);
-		System.out.println(t_search_word);
-
+		
 		String endDate2[] = endDate.split("-");// endDate2이라는 배열 변수에 endDate를 -를 기준으로 나눈 값들을 저장
 		mav.addObject("beginYear", beginYear);// beginDate1의 배열 영 번째 값을 beginYear이라는 키로 mav전달
 		mav.addObject("beginMonth", beginMonth);// beginDate1의 배열 첫 번째 값을 beginMonth라는 키로 mav전달
@@ -113,11 +107,14 @@ public class AdminMemberControllerImpl extends BaseController implements AdminMe
 	}
 
 	@RequestMapping(value = "/memberDetail.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView memberDetail(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView memberDetail(@RequestParam("member_id")String member_id,  
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
-		String member_id = request.getParameter("member_id");
+		/* String member_id = request.getParameter("member_id"); */
+		System.out.println("!!!!"+member_id);
 		MemberVO member_info = adminMemberService.memberDetail(member_id);
+		
 		mav.addObject("member_info", member_info);
 		return mav;
 	}
@@ -183,5 +180,6 @@ public class AdminMemberControllerImpl extends BaseController implements AdminMe
 		return mav;
 
 	}
+
 
 }

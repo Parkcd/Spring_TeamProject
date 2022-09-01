@@ -28,7 +28,8 @@ public class MainController extends BaseController {
 	@Autowired
 	private BoardService boardService;
 	@RequestMapping(value= "/main/main.do" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView main(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public ModelAndView main(HttpServletRequest request, HttpServletResponse response) throws Exception{ // ModelAndView에 main viewName 와 boardlist 
+																									     // session 정보등을 저장
 		HttpSession session;
 		ModelAndView mav=new ModelAndView();
 		String viewName=(String)request.getAttribute("viewName");
@@ -41,11 +42,12 @@ public class MainController extends BaseController {
 		Map<String,List<GoodsVO>> goodsMap=goodsService.listGoods();
 		mav.addObject("goodsMap", goodsMap);
 		//mav.addObject("listBoard",listBoard);
-		return mav;
+		return mav; // mav 반환 
 	}
 	
 	@RequestMapping(value= "main/Home_Appliances.do" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView HomeAppliances(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public ModelAndView HomeAppliances(HttpServletRequest request, HttpServletResponse response) throws Exception{ // ModelAndView에 HomeAppliances viewName 와 boardlist 
+	     																										   // session 정보등을 저장
 		HttpSession session;
 		ModelAndView mav=new ModelAndView();
 		String viewName=(String)request.getAttribute("viewName");
@@ -57,11 +59,12 @@ public class MainController extends BaseController {
 		Map<String,List<GoodsVO>> goodsMap=goodsService.listGoods();
 		mav.addObject("goodsMap", goodsMap);
 		mav.addObject("listBoard",listBoard);
-		return mav;
+		return mav; // mav 반환 
 	}
 	
 	@RequestMapping(value= "main/Kitchen.do" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView Kitchen(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public ModelAndView Kitchen(HttpServletRequest request, HttpServletResponse response) throws Exception{ // ModelAndView에 Kitchen viewName 와 boardlist 
+		   																									// session 정보등을 저장
 		HttpSession session;
 		ModelAndView mav=new ModelAndView();
 		String viewName=(String)request.getAttribute("viewName");
@@ -73,11 +76,12 @@ public class MainController extends BaseController {
 		Map<String,List<GoodsVO>> goodsMap=goodsService.listGoods();
 		mav.addObject("goodsMap", goodsMap);
 		mav.addObject("listBoard",listBoard);
-		return mav;
+		return mav; // mav 반환 
 	}
 	
 	@RequestMapping(value= "main/Furniture.do" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView Furniture(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public ModelAndView Furniture(HttpServletRequest request, HttpServletResponse response) throws Exception{ // ModelAndView에 Furniture viewName 와 boardlist 
+		   																									  // session 정보등을 저장
 		HttpSession session;
 		ModelAndView mav=new ModelAndView();
 		String viewName=(String)request.getAttribute("viewName");
@@ -89,11 +93,12 @@ public class MainController extends BaseController {
 		Map<String,List<GoodsVO>> goodsMap=goodsService.listGoods();
 		mav.addObject("goodsMap", goodsMap);
 		mav.addObject("listBoard",listBoard);
-		return mav;
+		return mav; // mav 반환 
 	}
 	
 	@RequestMapping(value= "main/Housegoods.do" ,method={RequestMethod.POST,RequestMethod.GET})
-	public ModelAndView Housegoods(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public ModelAndView Housegoods(HttpServletRequest request, HttpServletResponse response) throws Exception{ // ModelAndView에 Housegoods viewName 와 boardlist 
+		   																									   // session 정보등을 저장
 		HttpSession session;
 		ModelAndView mav=new ModelAndView();
 		String viewName=(String)request.getAttribute("viewName");
@@ -105,7 +110,7 @@ public class MainController extends BaseController {
 		Map<String,List<GoodsVO>> goodsMap=goodsService.listGoods();
 		mav.addObject("goodsMap", goodsMap);
 		mav.addObject("listBoard",listBoard);
-		return mav;
+		return mav; // mav 반환 
 	}
 	
 	
