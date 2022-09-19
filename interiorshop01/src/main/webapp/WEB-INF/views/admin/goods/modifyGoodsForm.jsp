@@ -189,11 +189,11 @@ function fn_modify_goods(goods_id, attribute){
 	<DIV id="container">
 		<UL class="tabs">
 			<li><A href="#tab1">상품정보</A></li>
-			<li><A href="#tab2">상품목차</A></li>
-			<li><A href="#tab3">상품저자소개</A></li>
+<!-- 			<li><A href="#tab2">상품목차</A></li>
+			<li><A href="#tab3">상품저자소개</A></li> -->
 			<li><A href="#tab4">상품소개</A></li>
-			<li><A href="#tab5">출판사 상품 평가</A></li>
-			<li><A href="#tab6">추천사</A></li>
+<!-- 			<li><A href="#tab5">출판사 상품 평가</A></li>
+			<li><A href="#tab6">추천사</A></li> -->
 			<li><A href="#tab7">상품이미지</A></li>
 		</UL>
 		<DIV class="tab_container">
@@ -203,16 +203,8 @@ function fn_modify_goods(goods_id, attribute){
 				<td width=200 >상품분류</td>
 				<td width=500>
 				  <select name="goods_sort">
-					<c:choose>
-				      <c:when test="${goods.goods_sort=='컴퓨터와 인터넷' }">
-						<option value="컴퓨터와 인터넷" selected>컴퓨터와 인터넷 </option>
-				  	    <option value="디지털 기기">디지털 기기  </option>
-				  	  </c:when>
-				  	  <c:when test="${goods.goods_sort=='디지털 기기' }">
-						<option value="컴퓨터와 인터넷" >컴퓨터와 인터넷 </option>
-				  	    <option value="디지털 기기" selected>디지털 기기  </option>
-				  	  </c:when>
-				  	</c:choose>
+						<option value="베스트셀러" selected>베스트셀러
+						<option value="일반">일반
 					</select>
 				</td>
 				<td >
@@ -220,7 +212,7 @@ function fn_modify_goods(goods_id, attribute){
 				</td>
 			</tr>
 			<tr >
-				<td >상품이름</td>
+				<td >제품이름</td>
 				<td><input name="goods_title" type="text" size="40"  value="${goods.goods_title }"/></td>
 				<td>
 				 <input  type="button" value="수정반영"  onClick="fn_modify_goods('${goods.goods_id }','goods_title')"/>
@@ -228,7 +220,7 @@ function fn_modify_goods(goods_id, attribute){
 			</tr>
 			
 			<tr>
-				<td >저자</td>
+				<td >제조사</td>
 				<td><input name="goods_writer" type="text" size="40" value="${goods.goods_writer }" /></td>
 								<td>
 				 <input  type="button" value="수정반영"  onClick="fn_modify_goods('${goods.goods_id }','goods_writer')"/>
@@ -236,7 +228,7 @@ function fn_modify_goods(goods_id, attribute){
 				
 			</tr>
 			<tr>
-				<td >출판사</td>
+				<td >발주사원</td>
 				<td><input name="goods_publisher" type="text" size="40" value="${goods.goods_publisher }" /></td>
 			     <td>
 				  <input  type="button" value="수정반영"  onClick="fn_modify_goods('${goods.goods_id }','goods_publisher')"/>
@@ -244,7 +236,7 @@ function fn_modify_goods(goods_id, attribute){
 				
 			</tr>
 			<tr>
-				<td >상품정가</td>
+				<td >제품정가</td>
 				<td><input name="goods_price" type="text" size="40" value="${goods.goods_price }" /></td>
 				<td>
 				 <input  type="button" value="수정반영"  onClick="fn_modify_goods('${goods.goods_id }','goods_price')"/>
@@ -253,7 +245,7 @@ function fn_modify_goods(goods_id, attribute){
 			</tr>
 			
 			<tr>
-				<td >상품판매가격</td>
+				<td >제품판매가격</td>
 				<td><input name="goods_sales_price" type="text" size="40" value="${goods.goods_sales_price }" /></td>
 				<td>
 				 <input  type="button" value="수정반영"  onClick="fn_modify_goods('${goods.goods_id }','goods_sales_price')"/>
@@ -263,7 +255,7 @@ function fn_modify_goods(goods_id, attribute){
 			
 			
 			<tr>
-				<td >상품 구매 포인트</td>
+				<td >제품 구매 포인트</td>
 				<td><input name="goods_point" type="text" size="40" value="${goods.goods_point }" /></td>
 				<td>
 				 <input  type="button" value="수정반영"  onClick="fn_modify_goods('${goods.goods_id }','goods_point')"/>
@@ -272,7 +264,7 @@ function fn_modify_goods(goods_id, attribute){
 			</tr>
 
 			<tr>
-				<td >상품출판일</td>
+				<td >제품발주일</td>
 				<td>
 				  <input  name="goods_published_date"  type="date"  value="${goods.goods_published_date }" />
 				</td>
@@ -283,7 +275,7 @@ function fn_modify_goods(goods_id, attribute){
 			</tr>
 			
 			<tr>
-				<td >상품 총 페이지수</td>
+				<td >누적 구매량</td>
 				<td><input name="goods_total_page" type="text" size="40"  value="${goods.goods_total_page }"/></td>
 				<td>
 				 <input  type="button" value="수정반영"  onClick="fn_modify_goods('${goods.goods_id }','goods_total_page"/>
@@ -300,7 +292,7 @@ function fn_modify_goods(goods_id, attribute){
 
 			</tr>
 			<tr>
-				<td >상품 배송비</td>
+				<td >제품 배송비</td>
 				<td><input name="goods_delivery_price" type="text" size="40"  value="${goods.goods_delivery_price }"/></td>
 				<td>
 				 <input  type="button" value="수정반영"  onClick="fn_modify_goods('${goods.goods_id }','goods_delivery_price')"/>
@@ -308,7 +300,7 @@ function fn_modify_goods(goods_id, attribute){
 
 			</tr>
 			<tr>
-				<td >상품 도착 예정일</td>
+				<td >제품 도착 예정일</td>
 				<td>
 				  <input name="goods_delivery_date" type="date"  value="${goods.goods_delivery_date }" />
 				  </td>
@@ -322,12 +314,14 @@ function fn_modify_goods(goods_id, attribute){
 				<td >상품종류</td>
 				<td>
 				<select name="goods_status">
-				  <option value="bestseller"  >베스트셀러</option>
-				  <option value="steadyseller" >스테디셀러</option>
-				  <option value="newbook" >신간</option>
-				  <option value="on_sale" >판매중</option>
-				  <option value="buy_out"  selected>품절</option>
-				  <option value="out_of_print" >절판</option>
+				  <option value="best_homeappliances">베스트 가전</option>
+				  <option value="homeappliances">가전</option>
+				  <option value="best_furniture">베스트 가구</option>
+				  <option value="furniture">가구</option>
+				  <option value="best_kitchen">베스트 주방</option>
+				  <option value="kitchen">주방</option>
+				  <option value="best_housegoods">베스트 생활용품</option>
+				  <option value="housegoods">생활용품</option>
 				</select>
 				<input  type="hidden" name="h_goods_status" value="${goods.goods_status }"/>
 				</td>

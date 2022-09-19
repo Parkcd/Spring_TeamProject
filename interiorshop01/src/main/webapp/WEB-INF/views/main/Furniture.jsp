@@ -71,7 +71,7 @@
 
 <div class="clear"></div>
 <div id="ad_sub_banner">
-	<img width="770" height="117" src="${contextPath}/resources/image/sub_banner02.jpg">
+	<img width="770" height="117" src="${contextPath}/resources/image/main/younglim2.jpg">
 </div>
 
 

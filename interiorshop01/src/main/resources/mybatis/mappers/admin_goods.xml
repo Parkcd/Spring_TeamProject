@@ -91,10 +91,9 @@
 										goods_delivery_price,
 										goods_delivery_date,
 										goods_status,
-										goods_writer_intro,
 										goods_intro,
-										goods_publisher_comment,
-										goods_recommendation,
+										
+									
 			              goods_contents_order)
 					  			values(
 					  			      #{goods_id},
@@ -112,12 +111,8 @@
 					  			      #{goods_isbn },
 					  			      #{goods_delivery_price },
 					  			      #{goods_delivery_date },
-					  			      #{goods_status },
-					  			      #{goods_writer_intro},
-											
+					  			      #{goods_status },	
 									      #{goods_intro},
-					  			      #{goods_publisher_comment },
-					  			      #{goods_recommendation },	
 					  			      #{goods_contents_order:VARCHAR}
 					 			 )
 		]]>

@@ -41,10 +41,10 @@ function result(){
 		<INPUT type="button" value="초기화">
 		
 		<Br><br>
-		   <a href="#">아이디 찾기</a>  | 
-		   <a href="#">비밀번호 찾기</a> | 
-		   <a href="${contextPath}/member/addMember.do">회원가입</a>    | 
-		   <a href="#">고객 센터</a>
+<!-- 		   <a href="#">아이디 찾기</a>  | 
+		   <a href="#">비밀번호 찾기</a>  -->
+		   <a href="${contextPath}/member/memberForm.do">회원가입</a> &nbsp;
+		   <a href="${contextPath}/qna/qnaMain.do">고객 센터</a>
 					   
 	</form>		
 </body>

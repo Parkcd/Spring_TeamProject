@@ -80,13 +80,16 @@ public class AdminGoodsControllerImpl extends BaseController  implements AdminGo
 		if(pageNum== null) {
 			pageNum = "1";
 		}
+		
+		
 		condMap.put("pageNum",pageNum);
 		condMap.put("beginDate",beginDate);
 		condMap.put("endDate", endDate);
-		condMap.put("search_condition", search_condition);// s_search_type condMap에 전달
-		condMap.put("search_word", search_word);// t_search_word condMap에 전달
+		condMap.put("search_condition", search_condition); // s_search_type condMap에 전달
+		condMap.put("search_word", search_word); // t_search_word condMap에 전달
 		List<GoodsVO> newGoodsList=adminGoodsService.listNewGoods(condMap);
 		mav.addObject("newGoodsList", newGoodsList);
+		
 		
 		String beginDate1[]=beginDate.split("-");
 		String endDate2[]=endDate.split("-");
